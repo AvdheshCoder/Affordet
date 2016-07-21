@@ -12,7 +12,7 @@ public class ApplicationContextUtils implements ApplicationContextAware {
 		ctx = appContext;
 
 	}
-
+//Manish
 	public static ApplicationContext getApplicationContext() {
 		return ctx;
 	}
