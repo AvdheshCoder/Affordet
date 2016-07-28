@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Mohini</title>
+<title>MDM</title>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/Common.js"></script>
@@ -108,13 +108,13 @@ function openNewWindow(url)
 			<div class="container">
 				<div class="header-bottom-left">
 					<div class="logo">
-						<a href="login"><img src="images/logo.png" alt=" " width='173' height='55'/></a>
+						<a href="login"><img src="images/logo.jpg" alt=" " /></a>
 					</div>
 					<div class="search">
-											<input type="text" value="" id="searc"	onkeypress="sugg('searc');" >
+											<input type="text" value="" id="searc"	onkeypress="sugg('searc');" placeholder="Search" >
 					
 				
-						<input type="submit"  value="SEARCH">
+						
 
 					</div>
 					
@@ -132,8 +132,8 @@ function openNewWindow(url)
 									<font size="2px" color="#F97E76"><u>Login</u></font></b></a>
 									</div> -->
 									<ul class="login">
-								<li>	<a href="loginup" rel="ibox"><span> </span>LOGIN</a></li> |
-							<li ><a href="signup" rel="ibox">SIGNUP</a></li>
+								<li>	<a href="loginup" rel="ibox"><span> </span>LOGIN</a></li> <!-- | -->
+							<li ><!-- <a href="signup" rel="ibox">SIGNUP</a> --></li>
 							</ul>
 									
 				</c:when>

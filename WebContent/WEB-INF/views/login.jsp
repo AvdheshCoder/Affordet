@@ -189,7 +189,7 @@ window.onload =  function() {
 <!-- 
 	<div class="module" > &nbsp; &nbsp;<font size="4px" color="white">Introduction</font></div>
  -->
-<span style="margin-left:5px;">
+<%-- <span style="margin-left:5px;">
 <h3 class="mainPage">Kundan Jewellery</h3>
    <ul id="flexiselDemo1">
    		<c:forEach var="listItems" items="${map.firstGrid}">
@@ -217,7 +217,7 @@ window.onload =  function() {
 			<li><img src="data:image/png;base64, ${listItems[7]}" /><div class="grid-flex"><a href="productInfo?productId=${listItems[0]}&categoryId=${listItems[3]}&subCategoryId=${listItems[4]}">${listItems[1]}</a><p>Rs ${listItems[5]}</p></div></li>
 	
 	</c:forEach>
-					 </ul>
+					 </ul> --%>
 
 	    <script type="text/javascript">
 		 $(window).load(function() {

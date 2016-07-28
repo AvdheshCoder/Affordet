@@ -133,7 +133,7 @@ function show(url)
 			
 			});
 		</script>
-					<div class=" chain-grid menu-chain">
+				<%-- 	<div class=" chain-grid menu-chain">
 					<h3 class="cate">PRODUCT OF THE DAY</h3>
 					<c:forEach var="listItems" items="${map.productOfTheDay}">
 	   		     		<a href="productInfo?productId=${listItems[0]}&categoryId=${listItems[3]}&subCategoryId=${listItems[4]}"><img class="img-pod chain" src="data:image/png;base64, ${listItems[7]}"  alt=" " /></a>	   		     		
@@ -143,6 +143,6 @@ function show(url)
 		   		     		<h6>${listItems[1]}</h6>  		     			   		     										
 	   		     		</div>
 	   		     		</c:forEach>
-	   		     	</div>
+	   		     	</div> --%>
 	   		     
 			</div>	
