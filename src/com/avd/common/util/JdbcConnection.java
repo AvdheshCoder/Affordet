@@ -64,17 +64,17 @@ public class JdbcConnection  {
 
 			
 			
-			  url="jdbc:mysql://localhost/test";
+			/*  url="jdbc:mysql://localhost/test";
 		 	  user="root"; 
 			  pass="123";
-
+*/
 			
-			/*url="jdbc:mysql://mysql.mohinimart.com/brajesh782_mohini";
-		 	  user="braje_mohini"; 
-			  pass="arun123@";
+			url="jdbc:mysql://www.db4free.net:3306/mdmdb";
+		 	user="mdmdb1234manish"; 
+			pass="123456";
 		
 			
-			*/
+			
 			con = DriverManager.getConnection(url, user, pass);
 		} catch (SQLException e) {
 			e.printStackTrace();
