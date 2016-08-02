@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.PasswordAuthentication;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -153,6 +154,25 @@ public class PaymentController {
 			String orderId=httpReq.getParameter("dsvGfTRFekjhgdfnm32Gjfh");
 			Map<String, Object> map = new HashMap<String, Object>();
 			
+			HttpSession session = httpReq.getSession(false);
+			String cartProduct="0";
+			
+			if(session!=null && session.getAttribute("loginId")!=null)
+			{
+			String loginId=session.getAttribute("loginId").toString();
+			map.put("loginId", loginId);
+			cartProduct=customerServc.getCartProducts(map);
+			}
+			else if(session!=null &&session.getAttribute("logId")!=null){
+				
+				String loginId=session.getAttribute("logId").toString();
+				map.put("loginId", loginId);
+				cartProduct=customerServc.getCartProducts(map);
+			
+			}
+			map.put("productInCart", cartProduct);
+			
+			
 			
 			if(orderId=="")
 			{
@@ -166,4 +186,104 @@ public class PaymentController {
 			}
 			
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/authorizeOrder")
+	public ModelAndView authorizeOrder(HttpServletRequest httpReq,
+			HttpServletResponse httpResp) throws Exception {
+		httpReq.setCharacterEncoding("UTF-8");
+		httpResp.setContentType("text/plain");
+		httpResp.setContentType("text/html; charset=UTF-8");
+		httpResp.setCharacterEncoding("UTF-8");	
+		PrintWriter out = httpResp.getWriter();
+		HttpSession session = httpReq.getSession(false);
+		String check="";
+		Map<String, Object> map = new HashMap<String, Object>();
+		String orderId=httpReq.getParameter("orderId");
+		String paymentId=httpReq.getParameter("paymentId").trim();
+		String amount=httpReq.getParameter("totalAmount").trim();
+		String email=httpReq.getParameter("email").trim();
+		map.put("orderId",orderId);
+		map.put("paymentId",paymentId);
+		map.put("amount",amount);
+		map.put("email",email);	
+		
+	
+		try{
+			System.out.println("PaymentId"+paymentId);
+		System.out.println("amount"+amount);		
+
+		Integer amnt= new Integer(amount);
+		amnt=amnt;
+		map.put("paymentId","DONE");
+		map.put("amount",amnt);
+		map.put("createdAt",new Timestamp(System.currentTimeMillis()));
+		
+		map.put("flag", "2");
+	
+		if(session!=null && session.getAttribute("loginId")!=null)
+		{
+		String loginId=session.getAttribute("loginId").toString();
+		map.put("loginId", loginId);
+		}
+		else if(session!=null &&session.getAttribute("logId")!=null){
+			String loginId=session.getAttribute("logId").toString();
+			map.put("loginId", loginId);
+		}
+		customerServc.updateTotalAmount(map);
+
+	
+	String mailMessg = "<h3>Greeting from MDM</h3>"
+			+ "Your Order has been registered with us" 
+			+ "<br />ORDER ID:"+orderId
+			+ " <br /> Order will be delivered to you till promised date, Stay assured"
+			+ "<br />Keep Smiling <br /><br /><br /><table border=\"1\"><tr><td> </td><td> </td></table>"
+			+ "Best Regards,<br />MDM Team<br />";
+	Map<String, String> inlineImages = new HashMap<String, String>();
+			
+	try {
+		com.avd.common.util.SendMail.sendEmailimg(email, "MDM Order Id:"+orderId+" Order Registered",mailMessg,inlineImages);
+	} catch (Exception e) {
+		System.out.println("not sent");
+	}
+	
+	return new ModelAndView("redirect:paymentSuccessful?dsvGfTRFekjhgdfnm32Gjfh="+orderId+"&amount=djsT565yhFG");
+}
+		
+		catch (Exception e) {
+			e.printStackTrace();
+			map.put("flag", "3");
+			customerServc.updateTotalAmount(map);
+
+			map.put("message", "Please try Again");
+			return new ModelAndView("error", "map", map);
+		}	
+		
+		
+		
+
+
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

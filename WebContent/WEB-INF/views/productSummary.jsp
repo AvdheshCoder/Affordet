@@ -200,8 +200,8 @@ float:right:
 										
 										<c:if test="${finlAmnt ne '0'}">
 										
-										<input type="button" class="order"  id="rzp-button1" name="rzp-button1" value="Payment" />
-										
+									<!-- 	<input type="button" class="order"  id="rzp-button1" name="rzp-button1" value="Place Order" />
+							 -->		<input type="button" class="order"  id="placeorder-button1" name="rzp-button1" value="Place Order" />	
 										</c:if>
 
 
@@ -245,7 +245,7 @@ float:right:
 <script>
 
 
-$("#rzp-button1").click(function(e){
+/* $("#rzp-button1").click(function(e){
 
 	
 	var options = {
@@ -282,6 +282,25 @@ $("#rzp-button1").click(function(e){
 	rzp1.open();
     e.preventDefault();
 });
+ */
+
+
+
+
+
+
+
+$("#placeorder-button1").click(function(e){
+
+			 document.getElementById("paymentId").value='DONE'
+		 document.getElementById("totalAmount").value=document.getElementById("totalAmountDisplay").innerHTML.trim();
+		 document.cart.action="authorizeOrder";
+		 document.cart.submit();	  
+		 loader("chakri");
+		   
+});
+
+
 </script>
 
 </body>

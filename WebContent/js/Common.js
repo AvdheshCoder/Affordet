@@ -1670,7 +1670,7 @@ function addCart(pId)
 	
 var params='pId='+pId+'&quantity=1';
 	try {
-
+		$('#wait').show();
 		var xml = ajaxRequest();
 		xml.onreadystatechange = function() {
 		
@@ -1683,6 +1683,7 @@ var params='pId='+pId+'&quantity=1';
 					
 
 				} else {
+					
 					alert("Please try again");
 				}
 
@@ -1695,8 +1696,10 @@ var params='pId='+pId+'&quantity=1';
 				"application/x-www-form-urlencoded");
 		xml.send(params);
 	} catch (e) {
+		
 		alert(e);
 	}
+	$('#wait').hide();
 
 	
 var a=	document.getElementById('productSelectedNo').innerHTML;
@@ -1704,6 +1707,7 @@ var b = parseInt(a)+1;
 document.getElementById('productSelectedNo').innerHTML=b;
 hideSpan('bef');
 showSpan('af');
+
 }
 
 function setCookie(cname, cvalue, exdays) {

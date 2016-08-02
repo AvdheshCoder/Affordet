@@ -356,15 +356,15 @@ color: #000;
 <div id="light" class="white_content">					
 <div id="chakri"></div>
 
-<div class="mai" id="xal">
+<div class="mai" >
 	<div class="wrap" >
 	<!--/start-topo-one-->
 	<div class="top-one">
 	<!--/start-login-->
 	<div class="login-one">
-		<div class="create-account" >
-		<div class="lb-close-btn" onclick="closeIt();"></div>
-			<div class="login-head">
+		<div class="create-account"  >
+		<div class="lb-close-btn" onclick="closeIt();" ></div><div id="xal">
+			<div class="login-head" >
 					<h2>Contact Us: </h2>
 					<span class="line">
 						<span class="sub-line"></span>
@@ -390,6 +390,9 @@ color: #000;
 		</form>
 		<div class="clear"> </div>
 		</div>
+		
+		</div>
+		
 	</div>
 
 		</div>

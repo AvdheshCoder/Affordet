@@ -112,6 +112,17 @@ public class CartController {
 		{
 		String emailId=session.getAttribute("emailId").toString();
 		map.put("emailId", emailId);
+		map.put("loginId", session.getAttribute("loginId").toString());
+		
+		if("1".equals(flag)| "2".equals(flag))
+		{
+		 dat1=customerServc.getReceiverAddress(map);
+		 if(dat1.size()>0)
+		 {
+		 Object[] abc=dat1.get(0); 
+		 map.put("emailId",abc[0]);
+		 }
+		}
 			}
 		if("1".equals(flag))
 		{
@@ -142,9 +153,16 @@ public class CartController {
 				map.put("loginId", loginId);
 						 
 			}				
+			
+			
 			 dat1=customerServc.getReceiverAddress(map);
+			 if(dat1.size()>0)
+			 {
 			 Object[] abc=dat1.get(0); 
 			 map.put("emailId",abc[0]);
+			 }
+			
+			
 		}
 		map.put("dat1", dat1);
 		return new ModelAndView("buyNowDetails", "map", map);
@@ -230,6 +248,7 @@ public class CartController {
 		List<Object[]> dat = new ArrayList<Object[]>();
 		List<Object[]> dat1 = new ArrayList<Object[]>();
 		dat=customerServc.getFinalProductsDesc(map);
+		map.put("flag",3 );
 		dat1=customerServc.getReceiverAddress(map);
 		
 		Integer total=0;

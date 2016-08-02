@@ -73,11 +73,10 @@ a.now-already {
 <body> 
 	<!--header-->
 	
-	<!---->
 	
 	 <div class="container"> 
-	 	
-	 	<div class=" single_top">
+	 		
+ 	<div class=" single_top">
 	      <div class="single_grid">
 				<div class="grid images_3_of_2">
 						<ul id="etalage">
@@ -105,9 +104,11 @@ a.now-already {
 						</ul>
 						 <div class="clearfix"> </div>		
 				  </div> 
+				  
+				  <c:forEach var="listItems" items="${map.info}">
 				  <div class="desc1 span_3_of_2">
 				  
-				<c:forEach var="listItems" items="${map.info}">
+				
 			<form id="common" name="common" method="post">
 				<input type="hidden" id="productId" name="productId" value="${listItems.productId}">
 			
@@ -115,8 +116,10 @@ a.now-already {
 										<h4>${listItems.productName}</h4>
 				<div class="cart-b">
 					<div class="left-n ">Rs. ${listItems.discountedPrice}</div>
-					
-					
+					<c:choose>
+						<c:when test="${loginName eq '' || loginName eq null}">
+						</c:when>
+					<c:otherwise>
 					<c:choose>
 					<c:when test="${map.cartExistFlag eq '1'}">
 					  <a class="now-already get-cart-in" href="#"><span onclick=""><font color='black'>ADDED TO CART</font></span></a> 
@@ -129,6 +132,9 @@ a.now-already {
 				 
 					  <a class="now-already get-cart-in" href="#" id='af'  style="display:none"><font color='black'>ADDED TO CART</font></a> 
 				 
+					</c:otherwise>
+					</c:choose>
+					
 					</c:otherwise>
 					</c:choose>
 				     <div class="clearfix"></div>
@@ -155,11 +161,17 @@ a.now-already {
 			   		    </h6>
 			   		       
 			   	
-			   	
+			   	<c:choose>
+						<c:when test="${loginName eq '' || loginName eq null}">
+						<font color="red">*Please login to buy </font>
+						</c:when>
+					<c:otherwise>
 			 
 			
 			 <a href="buyNow?flag=1&productId=${listItems.productId}&totalAmount=${listItems.discountedPrice}&returnPolicy=${listItems.returnPolicy}&returnDays=${listItems.returnPolicyDays}" rel="ibox" class="btn1 btn2 btn-primary1" ><span>BUY NOW</span></a>
-	  	</c:forEach>
+	  	  </c:otherwise> 
+			   		  </c:choose>
+	  
 			
 			   <!-- 	<div class="share">
 							<h5>Share Product :</h5>
@@ -178,12 +190,15 @@ a.now-already {
 			
 				
           	    <div class="clearfix"> </div>
+          	    
+          	   <%--    <div class="toogle">
+				     	<h3 class="m_3">Product Details</h3>
+				     	<p class="m_text">${listItems.productDescription}</p>
+				     </div> --%>
+				     </c:forEach>
           	   </div>
           	   
-          	   <div class="toogle">
-				     	<h3 class="m_3">Product Details</h3>
-				     	<p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-				     </div>
+          	 
 				     
 				     
 				     
@@ -225,11 +240,11 @@ a.now-already {
 	<script type="text/ javascript" src="js/jquery.flexisel.js"></script>-->
 
 
-	<h3 class="m_3"><a href='review?product_id=${pId}'>Reviews</a></h3>
+<%-- 	<h3 class="m_3"><a href='review?product_id=${pId}'>Reviews</a></h3>
  <div class="toogle">
 				     	<h6>Reviews</h6>
 				     	<p class="m_text">Lorem ipsum dolor sit amet,dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-				     </div>
+				     </div> --%>
 
 
           	    		

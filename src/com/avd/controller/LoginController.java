@@ -291,8 +291,7 @@ public void contactUsNow(HttpServletRequest httpReq,
 	map.put("mobileNo", mobileNo);
 	map.put("message", message);
 	customerServc.saveComplain(map);
-	out.print("<br/><br/><br/><br/><h3><font color='green'>Your request is sent , We will contact you shortly <br/> Thanks For the patience.</font></h3><br/><br/><br/><br/>");
-
+	out.print("<br/><br/><br/><br/><font color='green'><h5>&nbsp;&nbsp;Your request is sent</h5><h5>&nbsp;&nbsp;We will contact you shortly </h5><h5>&nbsp;&nbsp;Thank you For the patience.</h5></font<br/><br/><br/><br/>");
 }
 
 

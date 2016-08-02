@@ -1,9 +1,6 @@
 
-<style>
-
-</style>
 	<div class="footer" style="background-color:#0a3151;">
-		<div class="footer-top">
+	<!-- 	<div class="footer-top">
 			<div class="container">
 				<div class="latter">
 					<h6>Payment Options</h6>
@@ -24,12 +21,13 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-		</div>
-		<div class="footer-bottom">
-			<div class="container">
+		</div> -->
+		<div class="footer-top">
+			<div class="footerContainer">
 				<div class="footer-bottom-cate">
 					<h6>LINKS</h6>
 					<ul>
+					<li><a href="sellerLogin">Seller</a></li>
 						<li><a href="aboutUs">About Us</a></li>
 						<li><a href="contactUs">Contact Us</a></li>
 						<li><a href="t&c">Terms And Conditions</a></li>
@@ -46,9 +44,9 @@
 					</ul>
 				</div>
 				<div class="footer-bottom-cate">
-					<h6>TOP BRANDS</h6>
+					<h6>POWERED BY</h6>
 					<ul>
-				<li><a href="#">Mohini</a></li>
+				<li><a href="#">©2016 GG SOLUTIONS</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>

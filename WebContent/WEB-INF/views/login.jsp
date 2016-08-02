@@ -219,7 +219,7 @@ window.onload =  function() {
 	</c:forEach>
 					 </ul> --%>
 
-	    <script type="text/javascript">
+	   <!--  <script type="text/javascript">
 		 $(window).load(function() {
 			$("#flexiselDemo1").flexisel({
 				visibleItems: 5,
@@ -291,7 +291,7 @@ window.onload =  function() {
 		});
 	</script>
 	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
-
+ -->
 
 
 
@@ -304,15 +304,15 @@ window.onload =  function() {
 	
 		</div>		
  <div class="clearfix"> </div>			
-			<div class="clear"></div>
+			<!-- <div class="clear"></div> -->
 
 
 
-
+	<%@ include file="/WEB-INF/views/footer.jsp"%>
 	
 	</form>
 
-	<%@ include file="/WEB-INF/views/footer.jsp"%>
+
 
 
 

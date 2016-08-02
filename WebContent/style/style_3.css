@@ -16,7 +16,10 @@ body {
 }
 .wrap{width:90%;margin:0 auto; background:#fff }
 .wrapf{width:100%;margin:0 auto; background:#fff }
-.container{font-family:Tahoma, Geneva, sans-serif;width:98%;margin:30px auto; font-size:12px;border:1px solid #c1c1c1; background:#fff }
+.container{font-family:Tahoma, Geneva, sans-serif;width:98%;margin:20px auto; font-size:12px;border:1px solid #c1c1c1; background:#fff }
+.footerContainer{font-family:Tahoma, Geneva, sans-serif;width:99%;margin:20px auto; font-size:12px;border:1px solid #c1c1c1; background:#fff }
+
+
 img{border:0}
 .title{ font-family:title; font-size:20px;color:#ee6b1e}
 .welcometext{font-size:10pt;line-height:18px}

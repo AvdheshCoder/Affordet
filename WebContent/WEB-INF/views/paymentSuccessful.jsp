@@ -64,7 +64,7 @@ p.cart {
 
 <div class="checkout">
 	<div class="container">
-					<h1 class="title1">Your Transaction is Successful</h1>
+					<h1 class="title1">Your Order is Successful</h1>
 					<p class="cart">
 						<br>Click<a
 							href="login"> here</a> to continue shopping

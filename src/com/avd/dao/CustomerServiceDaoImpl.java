@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -771,12 +773,23 @@ List<Object[]> productInfo = new ArrayList<Object[]>();
 		
 		Session session = sessionFactory.openSession();
 		try{
+			
+		if("3".equals(map.get("flag").toString()))
+		{
 		SQLQuery qry = session
 				.createSQLQuery("select email_id , name, order_id , total_amount , address , mobile_no , pin_code "
 + "  from product_final_orders_information "
 +" where  login_id='"+map.get("loginId").toString()+"' and order_id='"+map.get("orderId").toString()+"'");
 		productInfo=qry.list();
-
+		}
+		else{
+			SQLQuery qry = session
+					.createSQLQuery("select email_id , name, order_id , total_amount , address , mobile_no , pin_code "
+	+ "  from product_final_orders_information "
+	+" where  login_id='"+map.get("loginId").toString()+"' order by order_date desc  limit 1");
+			productInfo=qry.list();
+		}
+		
 		} catch (HibernateException e) {
 
 			if (tx != null)
@@ -1025,8 +1038,8 @@ else if("2".equals(map.get("flag").toString()))
 		deliveryTime=String.valueOf(a[0]);
 		
 	}
-	ps = conn
-		.prepareStatement("update product_final_orders_information set order_date=current_timestamp ,expected_delivery_date=curdate()+"+deliveryTime+" , TOTAL_AMOUNT_RECEIVED='"+map.get("amount").toString()+"' , created_at='"+map.get("createdAt").toString()+"',payment_id='"+map.get("paymentId").toString()+"' , status_id='"+1+"',customer_finalize='"+1+"' where order_id='"+map.get("orderId").toString()+"'");
+		ps = conn
+		.prepareStatement("update product_final_orders_information set order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "+deliveryTime+" DAY) , TOTAL_AMOUNT_RECEIVED='"+map.get("amount").toString()+"' , created_at='"+map.get("createdAt").toString()+"',payment_id='"+map.get("paymentId").toString()+"' , status_id='"+1+"',customer_finalize='"+1+"' where order_id='"+map.get("orderId").toString()+"'");
 ps.executeUpdate();
 
 
