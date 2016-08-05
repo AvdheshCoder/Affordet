@@ -65,7 +65,10 @@ function openNewWindow(url)
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body>
+<body><!---->
+	 <div id="wait" align="center" style="display: none; width: 99%; height: 180%; z-index: 1; background-color: gray; opacity: 0.5; border: 1px solid black; position: absolute; padding: 2px;">
+		<img style="margin-top: 150px;" src='<%=request.getContextPath()%>/images/spinnerLarge.gif' width="80"	height="80" /><br>
+	</div>
 		<div class="wrap">
 		
 		
@@ -143,17 +146,18 @@ function openNewWindow(url)
 				</c:choose>			
 				
 				
-						<div class="cart"><a href="cart"><span></span>&nbsp;</a><span id="productSelectedNo" class="las">${map.productInCart}</span>  
-								</div>
-								
+							
 								<c:choose>
 				
 				<c:when test="${loginName eq '' || loginName eq null}">
 					</c:when>
 				<c:otherwise>
+					<div class="cart"><a href="cart"><span></span>&nbsp;</a><span id="productSelectedNo" class="las">${map.productInCart}</span>  
+								</div>
+						
 				<form id="logout" name="logout" method="post"> </form>
 								 <a href="#"><b>
-									<font size="2px" color="#F97E76"><span onclick="signout();">Sign out</span></font></b></a>
+									<font size="2px" color="#F97E76"><span onclick="signout();">Logout</span></font></b></a>
 					</c:otherwise>
 				</c:choose>			
 				
@@ -229,5 +233,5 @@ function openNewWindow(url)
 </c:otherwise>
 </c:choose>		
  </div> --%>
-<script type="text/javascript" src="js/ibox.js"></script>
+ <script type="text/javascript" src="js/ibox.js"></script>
  
