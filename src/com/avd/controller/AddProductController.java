@@ -17,36 +17,29 @@ import com.avd.model.Lu_Category;
 import com.avd.model.TblProductInformation;
 import com.avd.service.SellerService;
 
-
 @Controller
 public class AddProductController {
-	
-	
+
 	@Autowired
 	SellerService sellServc;
-	
-	
 
 	@RequestMapping("/addProduct")
-	public ModelAndView sellerEnd(HttpServletRequest httpReq,
-			HttpServletResponse httpResp) {
-
-		
+	public ModelAndView sellerEnd(HttpServletRequest httpReq, HttpServletResponse httpResp) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
-		TblProductInformation info= new TblProductInformation();
-	try{	
-		BeanUtils.populate(info, httpReq.getParameterMap());
-		map.put("info", info);
-		sellServc.saveProduct(map);
+		System.out.println("getting product info   ");
+		TblProductInformation info = new TblProductInformation();
+		try {
+			BeanUtils.populate(info, httpReq.getParameterMap());
+			info.setGiftWrap("0");
+			map.put("info", info);
+			sellServc.saveProduct(map);
+			map.put("successSaved", "1");
+			map.put("menuType", "1");
+			return new ModelAndView("sellerEnd", "map", map);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return new ModelAndView("error", "map", map);
+		}
+	}
 
-	return new ModelAndView("sellerEnd", "map", map);
-	}
-	catch(Exception ex)
-	{
-		ex.printStackTrace();
-		return new ModelAndView("error", "map", map);
-	}
-}
-	
 }

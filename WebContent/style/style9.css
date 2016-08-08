@@ -35,7 +35,7 @@ body
 	font-weight:300;
 	position: relative;
 }
-/*--- login-form ----*/
+/*--- 	-form ----*/
 .login-form
 {
   width: 100%;
@@ -96,17 +96,21 @@ body
 .form-left input[type="button"]{
 
   
-   background: #282828 url("../images/submit-btn1.png") no-repeat scroll 0 0;
-    border: 5px solid #ececec;
-    cursor: pointer;
-    display: inline-block;
-    height: 40px;
-    left: 18%;
-    outline: medium none;
-    position: relative;
-    top: 15%;
-    width: 40px;
+  background: #ec222f;
+  padding: 0.7em 1.5em;
+  color: #e2e5e2;
+  font-weight: 400;
+  border:none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.1s all;
+  -webkit-transition: 0.1s all;
+  -moz-transition: 0.1s all;
+  -o-transition: 0.1s all;
 }
+
+.appBtns{ background: #d43920;border-radius:5px; padding:5px;border:none}
 .form-left input[type="submit"]:hover{
 	opacity: .8;
 }
