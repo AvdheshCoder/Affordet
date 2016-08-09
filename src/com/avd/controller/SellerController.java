@@ -522,6 +522,7 @@ public class SellerController {
 
 		request.setAttribute("isImageSaved", "y");
 		// return ViewMukhiyaDataForEdit(request, response);
+		//Manish added it for test
 	}
 
 	@RequestMapping("/sliderPage")
