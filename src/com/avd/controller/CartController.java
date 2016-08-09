@@ -181,7 +181,7 @@ public class CartController {
 		String pincode=req.getParameter("pincode");
 		String flag=req.getParameter("flag");
 		String productId=req.getParameter("productId");
-		
+		String productId1=req.getParameter("productId");
 		String totalAmount=req.getParameter("totalAmount");
 		String returnPolicy=req.getParameter("productId");
 		String returnDays=req.getParameter("returnDays");
