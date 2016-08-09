@@ -34,7 +34,7 @@
 <body>
 	<!-- login-form-->
 	<div class="login-form">
-		<h1>Seller Login Form</h1>
+		<h1>Seller Login</h1>
 		<!--form-left-->
 		<div class="form-left">
 			<form name="sellerform" id="sellerform" method="post">
@@ -66,14 +66,14 @@
 					<font color="#e2e5e2;">${map.msg}</font>
 				</c:if>
 				</br> <input type="button" value="Login" onclick="sellerLogin();" /> <input
-					type="button" value="Go Back" onclick="goBackToLogin();" />
+					type="button" value="Back" onclick="goBackToLogin();" />
 			</form>
 		</div>
 		<!--form-left-->
 		<!--copy-right-->
 		<div class="copy-right">
 			<p>
-				Design By <a href="http://w3layouts.com/">W3layouts</a>
+				Design By GG Solutions
 			</p>
 		</div>
 		<div class="clear"></div>

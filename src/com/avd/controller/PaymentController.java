@@ -244,16 +244,16 @@ public class PaymentController {
 		customerServc.updateTotalAmount(map);
 
 	
-	String mailMessg = "<h3>Greeting from MDM</h3>"
+	String mailMessg = "<h3>Greeting from Balaji Traders</h3>"
 			+ "Your Order has been registered with us" 
 			+ "<br />ORDER ID:"+orderId
 			+ " <br /> Order will be delivered to you till promised date, Stay assured"
 			+ "<br />Keep Smiling <br /><br /><br /><table border=\"1\"><tr><td> </td><td> </td></table>"
-			+ "Best Regards,<br />MDM Team<br />";
+			+ "Best Regards,<br />Balaji MDM Team<br />";
 	Map<String, String> inlineImages = new HashMap<String, String>();
 			
 	try {
-		com.avd.common.util.SendMail.sendEmailimg(email, "MDM Order Id:"+orderId+" Order Registered",mailMessg,inlineImages);
+		com.avd.common.util.SendMail.sendEmailimg(email, "Balaji Traders, Order Details",mailMessg,inlineImages);
 	} catch (Exception e) {
 		System.out.println("not sent");
 	}

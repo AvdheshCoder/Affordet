@@ -114,13 +114,13 @@ function openNewWindow(url)
 					<div class="logo">
 						<a href="login"><img src="images/logo.jpg" alt=" " /></a>
 					</div>
-					<div class="search">
+				<!-- 	<div class="search">
 											<input type="text" value="" id="searc"	onkeypress="sugg('searc');" placeholder="Search" >
 					
 				
 						
 
-					</div>
+					</div> -->
 					
 				</div>
 				<div class="header-bottom-right">	

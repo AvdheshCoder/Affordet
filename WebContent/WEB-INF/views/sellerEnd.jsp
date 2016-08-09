@@ -204,9 +204,9 @@
 
 			imageVal = document.getElementById(imgId).value.split('.');
 			var ext = imageVal[imageVal.length - 1].toLowerCase();
-			if ((ext != 'jpg') && (ext != 'jpeg') && (ext != 'gif')
+			if ((ext != 'jpg') && (ext != 'jpeg')
 					&& (ext != 'png')) {
-				alert("कृपया फाइल jpg, jpeg, gif, png फॉर्मेट में चुने|");
+				alert("कृपया फाइल jpg, jpeg, png फॉर्मेट में चुने|");
 				return false;
 			}
 
@@ -218,8 +218,8 @@
 			oMyForm.append("pId", document.getElementById("productId").value);
 			oMyForm.append("categoryId",
 					document.getElementById("categoryId").value);
-			oMyForm.append("subCategoryId", document
-					.getElementById("subCategoryId").value);
+		 	oMyForm.append("subCategoryId", document
+					.getElementById("subCategoryId").value); 
 			loader('chakri');
 			$
 					.ajax({

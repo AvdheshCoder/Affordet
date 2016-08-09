@@ -28,6 +28,7 @@ public class AddProductController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println("getting product info   ");
 		TblProductInformation info = new TblProductInformation();
+		 int a=0;
 		try {
 			BeanUtils.populate(info, httpReq.getParameterMap());
 			info.setGiftWrap("0");

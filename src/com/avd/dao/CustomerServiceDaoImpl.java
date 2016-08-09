@@ -1039,7 +1039,7 @@ else if("2".equals(map.get("flag").toString()))
 		
 	}
 		ps = conn
-		.prepareStatement("update product_final_orders_information set order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "+deliveryTime+" DAY) , TOTAL_AMOUNT_RECEIVED='"+map.get("amount").toString()+"' , created_at='"+map.get("createdAt").toString()+"',payment_id='"+map.get("paymentId").toString()+"' , status_id='"+1+"',customer_finalize='"+1+"' where order_id='"+map.get("orderId").toString()+"'");
+		.prepareStatement("update product_final_orders_information set order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "+deliveryTime+" DAY) , created_at='"+map.get("createdAt").toString()+"',payment_id='"+map.get("paymentId").toString()+"' , status_id='"+1+"',customer_finalize='"+1+"' where order_id='"+map.get("orderId").toString()+"'");
 ps.executeUpdate();
 
 
