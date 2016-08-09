@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ page session="true"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -17,6 +17,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Seller-End</title>
 <link rel="stylesheet" type="text/css" href="style/style_3.css" />
+<%@ include file="/WEB-INF/views/header_seller.jsp"%>
 <script type="text/javascript">
 	$(function() {
 		var menu_ul = $('.menu > li > ul'), menu_a = $('.menu > li > a');
@@ -107,7 +108,7 @@
 </script>
 <script type="text/javascript" src="js/jquery.flexisel.js"></script>
 
-<%@ include file="/WEB-INF/views/header_seller.jsp"%>
+
 </head>
 <body>
 	<form name="sellerform" id="sellerform" method="post">

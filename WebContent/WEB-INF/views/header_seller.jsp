@@ -1,4 +1,5 @@
-<%@page pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -72,7 +73,7 @@
 		<div class="header">
 			<div class="top-header">
 
-				<div class="top-header-left">
+			<%-- 	<div class="top-header-left">
 					<ul class="support">
 						<li><a href="#"><label> </label></a></li>
 						<!-- <li><a href="contact" rel="ibox">24x7 live<span
@@ -80,7 +81,7 @@
 					</ul>
 					<ul class="support">
 						<!-- <li class="van"><a href="#"><label> </label></a></li> -->
-						<li><%-- <c:choose>
+						<li><c:choose>
 
 								<c:when test="${loginName eq '' || loginName eq null}">
 									<a href="trackOrder" rel="ibox">Track Order</a>
@@ -88,12 +89,12 @@
 								<c:otherwise>
 									<a href="trackOrder">Track Order</a>
 								</c:otherwise>
-							</c:choose> --%></li>
+							</c:choose></li>
 					</ul>
 					<div class="clearfix"></div>
 					<!---->
 					<div class="clearfix"></div>
-				</div>
+				</div> --%>
 				<div class="clearfix"></div>
 			</div>
 
@@ -105,14 +106,7 @@
 						<div class="logo">
 							<a href="login"><img src="images/logo.jpg" alt=" " /></a>
 						</div>
-						<div class="search">
-							<input type="text" value="" id="searc"
-								onkeypress="sugg('searc');" placeholder="Search">
-
-
-
-
-						</div>
+					
 
 					</div>
 					<div class="header-bottom-right">
@@ -137,11 +131,11 @@
 							</c:otherwise>
 						</c:choose>
 
-
+<%-- 
 						<div class="cart">
 							<a href="cart"><span></span>&nbsp;</a><span
 								id="productSelectedNo" class="las">${map.productInCart}</span>
-						</div>
+						</div> --%>
 
 						<c:choose>
 
