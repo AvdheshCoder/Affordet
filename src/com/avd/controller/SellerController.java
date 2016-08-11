@@ -531,8 +531,6 @@ public class SellerController {
 		return new ModelAndView("sliderPage");
 
 	}
-	@RequestMapping("/bhaimere")
-	public void bhaimere(HttpServletRequest httpReq, HttpServletResponse httpResp) {
 
-	}
+	
 }
