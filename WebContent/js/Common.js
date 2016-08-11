@@ -1939,6 +1939,16 @@ else if((document.getElementById("receiverName").value=="" ))
  		commonMessage("emailInvalid","Incorrect Pin No");
 	 }
 	 
+	  else if (isNaN(document.getElementById("pincode").value))
+		{
+		  commonMessage("emailInvalid","Please only enter numbers in pin code");
+		}
+	
+	else if (document.getElementById("pincode").value.indexOf(".")!=-1)
+		{
+		 commonMessage("emailInvalid","Please enter whole numbers like 1,2 ,3..");
+		}
+	 
      else if(document.getElementById("mobileNo").value.length <10)
 	 {
 		 commonMessage("emailInvalid","Incorrect Mobile No");
@@ -1954,12 +1964,12 @@ else if((document.getElementById("receiverName").value=="" ))
    
 	  else if (isNaN(document.getElementById("mobileNo").value))
 		{
-		alert("Please only enter numbers in mobile number");
+		  commonMessage("emailInvalid","Please only enter numbers in mobile number");
 		}
 	
-	else if (qntity.indexOf(".")!=-1)
+	else if (document.getElementById("mobileNo").value.indexOf(".")!=-1)
 		{
-		alert("Please enter whole numbers like 1,2 ,3..");
+		 commonMessage("emailInvalid","Please enter whole numbers like 1,2 ,3..");
 		}
 	 
 

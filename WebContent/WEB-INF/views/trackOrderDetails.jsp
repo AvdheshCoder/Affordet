@@ -63,8 +63,9 @@
   background: #fff;
   padding: 1em;
   width: 100%;
-  height:150%;
+  height:140%;
   margin: 0 auto;
+  border: 2px solid black;
 }
 .form-left span
 {
@@ -125,12 +126,12 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 
 .form-left p {
-  margin-left: 19%;
+  margin-left: 12%;
 }
 .form-left form p a
 {
 	color:#999;
-	font-size: 16px;
+	font-size: 12px;
 }
 .form-left  p a:hover
 {
@@ -200,7 +201,7 @@ img{max-width:100%;}
 		<c:forEach var="listItem" items="${map.cartProductsDesc}">
 			
 		
-		<h4>Order Id <font color="blue"> ${listItem[1]}</font> &nbsp;&nbsp;  Status <font color="green">
+		<h4>Id: <font color="blue"> ${listItem[1]}</font> &nbsp;&nbsp;  Status <font color="green">
 			<c:set var="stat" value="${listItem[24]}"></c:set>
 		<u>${listItem[24]} </u></font></h4>
 		
@@ -210,7 +211,7 @@ img{max-width:100%;}
 		<td width="50%" >Address ${listItem[3]}</td></tr>
 		<tr><td>Order Date: <fmt:formatDate
 															pattern="dd-MM-yyyy" value="${listItem[6]}" /> </td>
-															<td>Delivery Date: <c:set var="tot" value="${listItem[23]}"></c:set>
+															<td>Delivery Date: <c:set var="tot" value="${listItem[2]}"></c:set>
 															
 															<c:set var="sellFlag" value="${listItem[16]}"></c:set>
 															
@@ -233,7 +234,7 @@ img{max-width:100%;}
 	 <h6>Address:</h6> 
 	 -->
 			<form name="sellerform" id="sellerform" method="post">
-								<div class="container" style="box-shadow: 10px 10px 5px #888888;">
+								<div class="containe" style="box-shadow: 10px 10px 5px #888888;margin: ">
 
 						<table>
 						<thead style="background-color:#E0E0D1">
@@ -244,7 +245,7 @@ img{max-width:100%;}
 						<th align="center">Status</th>
 						</tr>
 						</thead>
-						<tbody>
+						<tbody style="padding:1px;">
 						<c:forEach var="listItem" items="${map.cartProductsDesc1}"
 					varStatus="counter">
 						<tr style="border:1px solid;border-color:threedlightshadow;">
@@ -257,7 +258,7 @@ img{max-width:100%;}
 								${listItem[7]}
 						</td>
 					
-						<td width="30%" align="left">${listItem[8]}</td>
+						<td width="28%" align="left">${listItem[8]}</td>
 						<td> ${stat}
 						<%-- 
 						<c:if test="${sellFlag eq '1'}" >
@@ -281,7 +282,7 @@ img{max-width:100%;}
 
 					</div>
 					
-					<div style="float:right;"><h4>Amount Paid:<b> Rs.${tot}</b></h4></div>
+					<div style="float:right;"><h4>Amount:<b> Rs.${tot}</b></h4></div>
 					
 			
 			</form>

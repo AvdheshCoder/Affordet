@@ -77,32 +77,34 @@ p.cart {
 						<thead style="background-color:#E0E0D1">
 						<tr><th colspan='2' width='23%'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order Id</th>
 						<th align="center">Receiver Name</th>
-						<th align="center">E mail</th>
+						<th align="center">Status</th>
 						<th align="center">Order Date</th>
 						<th align="center">Delivery on</th> 
-						<th align="center">Total Amount</th>
+						<th align="center">Amount</th>
 						</tr>
 						</thead>
 						<tbody>
 						<c:forEach var="listItem" items="${map.cartProductsDesc}"
 					varStatus="counter">
-						<tr style="border:1px solid;border-color:threedlightshadow;"><td colspan='2' align="left">
-						
-				  <a class="now-get get-cart-in" style="float:left;" rel ="ibox" href="trackOrderDetails?orderId=${listItem[1]}" id='bef'><span> ${listItem[1]}</span></a> 
-				
-						</td>
-						<td width="20%" >
-								 ${listItem[18]}	
-						</td>
-						<td width="20%">${listItem[0]}</td><td width="20%" ><fmt:formatDate
-															pattern="dd-MM-yyyy" value="${listItem[6]}" /> </td>
-															<td width="20%" ><fmt:formatDate
-															pattern="dd-MM-yyyy" value="${listItem[7]}" /> </td>
-															<td width="20%"><span>${listItem[23]}</span></td></tr>
-							
-						
-					<tr><td>&nbsp;</td></tr>
-						</c:forEach>
+								<tr style="border: 1px solid; border-color: threedlightshadow;">
+									<td colspan='2' align="left"><a
+										class="now-get get-cart-in" style="float: left;" rel="ibox"
+										href="trackOrderDetails?orderId=${listItem[1]}" id='bef'><span>
+												${listItem[1]}</span></a></td>
+									<td width="20%">${listItem[18]}</td>
+									<td width="20%"><font color="green">${listItem[24]}</font></td>
+									<td width="20%"><fmt:formatDate pattern="dd-MM-yyyy"
+											value="${listItem[6]}" /></td>
+									<td width="20%"><fmt:formatDate pattern="dd-MM-yyyy"
+											value="${listItem[7]}" /></td>
+									<td width="20%"><span>${listItem[2]}</span></td>
+								</tr>
+
+
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 						</table>
 					</div>
@@ -150,7 +152,13 @@ p.cart {
 
 </table> -->
 
+ <div class="clearfix"> </div>			
+			<!-- <div class="clear"></div> -->
 
+
+
+	<%@ include file="/WEB-INF/views/footer.jsp"%>
+	
 
 
 
