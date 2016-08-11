@@ -92,7 +92,7 @@ p.cart {
 										href="trackOrderDetails?orderId=${listItem[1]}" id='bef'><span>
 												${listItem[1]}</span></a></td>
 									<td width="20%">${listItem[18]}</td>
-									<td width="20%"><font color="green">${listItem[24]}</font></td>
+									<td width="20%"><font color="green">${listItem[26]}</font></td>
 									<td width="20%"><fmt:formatDate pattern="dd-MM-yyyy"
 											value="${listItem[6]}" /></td>
 									<td width="20%"><fmt:formatDate pattern="dd-MM-yyyy"

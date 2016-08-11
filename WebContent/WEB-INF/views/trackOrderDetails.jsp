@@ -202,8 +202,8 @@ img{max-width:100%;}
 			
 		
 		<h4>Id: <font color="blue"> ${listItem[1]}</font> &nbsp;&nbsp;  Status <font color="green">
-			<c:set var="stat" value="${listItem[24]}"></c:set>
-		<u>${listItem[24]} </u></font></h4>
+			<c:set var="stat" value="${listItem[26]}"></c:set>
+		<u>${listItem[26]} </u></font></h4>
 		
 		<table>
 		<tr><td width="50%">Name: ${listItem[18]}</td><td width="50%">Email ${listItem[0]}</td></tr>
@@ -238,11 +238,11 @@ img{max-width:100%;}
 
 						<table>
 						<thead style="background-color:#E0E0D1">
-						<tr><th colspan='2' width='40%'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Item </th>
+						<tr><th colspan='2' width='60%'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Item </th>
 						<th align="center">Quantity</th>
-					<!-- 	<th align="center">Price</th> -->
+						<th align="center">Price</th>
 						<th align="center">SubTotal</th> 
-						<th align="center">Status</th>
+					<!-- 	<th align="center">Status</th> -->
 						</tr>
 						</thead>
 						<tbody style="padding:1px;">
@@ -258,9 +258,12 @@ img{max-width:100%;}
 								${listItem[7]}
 						</td>
 					
-						<td width="28%" align="left">${listItem[8]}</td>
-						<td> ${stat}
-						<%-- 
+					<td width="20%" align="center">
+								${listItem[11]}
+						</td>
+						<td width="28%" align="right">${listItem[8]}</td>
+						<%-- <td> ${stat}
+						
 						<c:if test="${sellFlag eq '1'}" >
 						<c:if test="${listItem[12] ne '9'}" >
 						<a class="now-get get-cart-in" style="float:left;" rel ="ibox" href="trackOrderDetails?orderId=${listItem[1]}" id='bef'>Return</a> 
@@ -271,7 +274,7 @@ img{max-width:100%;}
 				
 						</c:if>
 </c:if>
- --%></td></tr>
+</td> --%></tr>
 								
 					
 						</c:forEach>
