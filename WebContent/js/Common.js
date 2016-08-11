@@ -1609,7 +1609,7 @@ else{
 }
 
 function mainLogIn(url, div, chakri, params) {
-	
+	loader('chakri1');
 	/*alert(url);
 	alert(div);
 	alert(chakri);
@@ -1652,7 +1652,7 @@ function mainLogIn(url, div, chakri, params) {
 		
 		document.loginX.action="login";
 		document.loginX.submit();
-		loader('chakri');
+		loader('chakri1');
 		
 		}
 	}

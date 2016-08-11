@@ -343,7 +343,7 @@ img{max-width:100%;}
 
 
 <div id="light" class="white_content">
-<div id="chakri"></div>
+<div id="chakri1"></div>
 
 		<%-- 	<form name="login" id="login" method="post">
 			<a href="${link}" ><img src="images/close_red.png" align="right" style="top:19px;right:10px; position:relative" /></a>

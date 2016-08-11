@@ -1039,7 +1039,7 @@ else if("2".equals(map.get("flag").toString()))
 		
 	}
 		ps = conn
-		.prepareStatement("update product_final_orders_information set order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "+deliveryTime+" DAY) , created_at='"+map.get("createdAt").toString()+"',payment_id='"+map.get("paymentId").toString()+"' , status_id='"+1+"',customer_finalize='"+1+"' where order_id='"+map.get("orderId").toString()+"'");
+		.prepareStatement("update product_final_orders_information set order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "+deliveryTime+" DAY) , created_at='"+map.get("createdAt").toString()+"',payment_id='"+map.get("paymentId").toString()+"' , status_id='"+1+"', status_description='PENDING' , customer_finalize='"+1+"' where order_id='"+map.get("orderId").toString()+"'");
 ps.executeUpdate();
 
 
@@ -1278,7 +1278,7 @@ public List<Object[]> getTrackDesc(Map<String, Object> map) {
 	SQLQuery qry = session
 			.createSQLQuery("select t1.product_id, t1.product_name,t1.discount, t2.category_id,t2.sub_category_id,t1.discounted_price , t1.actual_price,t3.quantity,t3.amount * t3.quantity "
 + " ,t2.product_images,t3.return_days, t3.amount , t3.status_id from product_final_orders t3"
-+" inner join tbl_product_display_images t2 on t2.p_id= t3.product_id " 
++" left join tbl_product_display_images t2 on t2.p_id= t3.product_id " 
 +" inner join tbl_product_information t1 on t1.product_id= t3.product_id " 
 +" where   t3.order_id='"+map.get("orderId").toString()+"'");
 	productInfo=qry.list();
