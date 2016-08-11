@@ -101,7 +101,7 @@ p.cart {
 												id="preQuant${listItem[0]}" value="${listItem[7]}">
 												<input type="text" id="quant${listItem[0]}" onpaste="return false"
 												value="${listItem[7]}" style="height: 27px; width: 25px;"
-												maxlength="1"
+												maxlength="3"
 												onkeypress="isCartCheck(event);showSpan('span${listItem[0]}');"
 												onblur="checkCartVal('preQuant${listItem[0]}','quant${listItem[0]}');">
 												<br /> <a style="font-size: 10px; color: blue;"><span

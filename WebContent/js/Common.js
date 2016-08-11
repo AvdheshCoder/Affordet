@@ -1950,11 +1950,26 @@ else if((document.getElementById("receiverName").value=="" ))
 			 commonMessage("emailInvalid","Fill complete address");
 
 		 }
+   
+   
+	  else if (isNaN(document.getElementById("mobileNo").value))
+		{
+		alert("Please only enter numbers in mobile number");
+		}
+	
+	else if (qntity.indexOf(".")!=-1)
+		{
+		alert("Please enter whole numbers like 1,2 ,3..");
+		}
 	 
 
 	  else{
+
+		
+
 			  document.buyNow.action="productAddSummary";
 			  document.buyNow.submit();	  
+			loader("chakri");
 	  }
 }
 
@@ -1968,6 +1983,25 @@ function updateQuant(id,url,saveSpan,totalAmount,subTotal,productId,aId,producAv
 		document.getElementById(id).value=document.getElementById(aId).value;
 		hideSpan(saveSpan);
 		}
+	else if (isNaN(qntity))
+		{
+		alert("Please only enter numbers");
+		}
+	
+	else if (qntity.indexOf(".")!=-1)
+		{
+		alert("Please enter whole numbers like 1,2 ,3..");
+		}
+	else if(parseInt(qntity)<1)
+		
+	{
+	alert("Please enter above 0");
+	}
+	else if (qntity.length>3)
+		
+	{
+	alert("Please enter a lower quantity");
+	}
 	else if(parseInt(qntity)>parseInt(producAvailable))
 		{
 		alert("We are So Sorry !Only "+producAvailable+" item(s) are left of "+producName);

@@ -353,12 +353,14 @@ color: #000;
 
 </head>
 <body>
+
 <div class="alpha30">
 <div id="light" class="white_content">					
 
 
 <div class="mai">
 	<div class="wrap">
+	<div id="chakri"></div>
 	<!--/start-topo-one-->
 	<div class="top-one">
 	<!--/start-login-->

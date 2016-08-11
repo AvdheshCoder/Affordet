@@ -167,7 +167,7 @@ float:right:
 						<td width="20%" >
 								<input type="hidden" id="preQuant${listItem[0]}"  value="${listItem[7]}">
 										
-						<input type="text" id="quant${listItem[0]}" value="${listItem[7]}" style="height:27px;width:25px;" maxlength="1" onkeypress="isCartCheck(event);showSpan('span${listItem[0]}');" onblur="checkCartVal('preQuant${listItem[0]}','quant${listItem[0]}');" >
+						<input type="text" id="quant${listItem[0]}" value="${listItem[7]}" style="height:27px;width:25px;" maxlength="3" onkeypress="isCartCheck(event);showSpan('span${listItem[0]}');" onblur="checkCartVal('preQuant${listItem[0]}','quant${listItem[0]}');" >
 						<br/>
 						<a style="font-size:10px;color:blue;"><span id="span${listItem[0]}" style="display:none;width:20px;cursor:pointer;" onclick="updateQuant('quant${listItem[0]}','updateFinalQuantity','span${listItem[0]}','totalAmountDisplay','subTot${listItem[0]}','${listItem[0]}','preQuant${listItem[0]}','${listItem[11]}','${listItem[1]}');">Save</span></a>
 						
@@ -231,7 +231,7 @@ float:right:
 		</c:choose> 
 
 
-    <div id="chakri"></div>
+    <div id="chakri1"></div>
 
 <!-- <table>
 <tr><th>Product</th><th>Price</th><th></th></tr>
@@ -296,7 +296,7 @@ $("#placeorder-button1").click(function(e){
 		 document.getElementById("totalAmount").value=document.getElementById("totalAmountDisplay").innerHTML.trim();
 		 document.cart.action="authorizeOrder";
 		 document.cart.submit();	  
-		 loader("chakri");
+		 loader("chakri1");
 		   
 });
 

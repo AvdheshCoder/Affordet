@@ -8,7 +8,7 @@
 			type="hidden" id="isActive" name="isActive" value="1"></input>
 			
 			<input
-			type="hidden" id="subCategoryId" name="subCategoryId" value="1"></input>
+			type="hidden" id="subCategoryId" name="subCategoryId" value="0"></input>
 			<h2>Add Product Form</h2></td>
 	</tr>
 
