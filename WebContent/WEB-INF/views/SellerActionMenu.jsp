@@ -14,6 +14,7 @@
 			<li class="item1"><a href='#' onclick="existingProduct();">
 					Existing Products</a></li>
 			<li class="item1"><a href='#' onclick="orders();"> Orders</a></li>
+			<li class="item1"><a href='#' onclick="listOrders();"> Order List</a></li>
 			<li class="item1"><a href='#' onclick="rating();"> Rating</a></li>
 		</ul>
 

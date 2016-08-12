@@ -44,6 +44,7 @@ import com.avd.model.Lu_Category;
 import com.avd.model.TblProductInformation;
 import com.avd.service.SellerService;
 import com.avd.service.vo.PagedCustView;
+import com.avd.service.vo.PagedOrdersView;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 @Controller
@@ -522,7 +523,7 @@ public class SellerController {
 
 		request.setAttribute("isImageSaved", "y");
 		// return ViewMukhiyaDataForEdit(request, response);
-		//Manish added it for test
+		// Manish added it for test
 	}
 
 	@RequestMapping("/sliderPage")
@@ -532,5 +533,33 @@ public class SellerController {
 
 	}
 
-	
+	@RequestMapping("/getOrdersList")
+	public ModelAndView getOrdersList(HttpServletRequest httpReq, HttpServletResponse httpResp) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		Map<String, PagedOrdersView> model = new HashMap<String, PagedOrdersView>();
+		PagedOrdersView porderv = new PagedOrdersView();
+
+		String page = (String) httpReq.getParameter("page");
+		porderv.getNavInfo().setRowCount(sellServc.getcountOrders(map));
+
+		if (null == page)
+			porderv.getNavInfo().setCurrentPage(0);
+		else
+			porderv.getNavInfo().setCurrentPage(Integer.parseInt(page));
+
+		porderv.setOrderInfo(sellServc.getAllOrderDetails(porderv.getNavInfo().getCurrentPage(),
+				porderv.getNavInfo().getPageSize(), map));
+
+		httpReq.getSession().setAttribute("pagedOrd", porderv);
+		System.out.println("information size is "+porderv.getordersInfo().size());
+		model.put("porder", porderv);
+
+		httpReq.setAttribute("page", page);
+		map.put("menuType", "4");
+		return new ModelAndView("sellerEnd", "map", map);
+
+	}
+
 }

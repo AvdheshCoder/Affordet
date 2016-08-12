@@ -13,7 +13,7 @@
 
 		<tr>
 			<td colspan="4">
-				<h2>Existing Products</h2>
+				<h2>List Of Orders</h2>
 			</td>
 		</tr>
 
@@ -22,43 +22,38 @@
 			<td height="40" colspan="4" style="border-top: 1px solid #000"
 				align="center">
 				<h3>
-					<font color="green"><u>Product Information</u></font>
+					<font color="green"><u>Order Information</u></font>
 				</h3>
 			</td>
 		</tr>
-	</table>
+	</table>${fn:length(porder.ordersInfo)}
 	<c:choose>
-		<c:when test="${fn:length(pagedcust.productInfo)>0}">
+		<c:when test="${fn:length(porder.ordersInfo)>0}">
 			<table id="tbl_report" align="center" cellpadding="3" cellspacing="2"
 				border="0" class="gridviewnew" style="width: 97%; padding: 5px;">
 				<thead>
 					<tr>
 						<th width="15">Select</th>
-						<th width="10">S.No</th>
-						<th width="25">Product Id</th>
-						<th width="25">Product Name</th>
+						<th width="10">Order Id</th>
+						<th width="10">Order by</th>
+						<th width="10">Order Date</th>
+						<th width="10">Order Total Amount</th>
+						<th width="10">Order Status</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="cust" items="${pagedcust.productInfo}"
+					<c:forEach var="order" items="${porder.ordersInfo}"
 						varStatus="status">
 						<tr>
 							<td><input type='radio' name='selection' value=""
 								id='selRd2'
 								onclick="load_product('editProduct','bhDtl','chakri', 'productId=${cust.productId}');">
 							</td>
-
-							<td><c:choose>
-									<c:when test="${status.count == 10}">
-					  	   ${page+1}0
-					  	   </c:when>
-									<c:otherwise>
-					  	   ${page}${status.count}
-					  	  </c:otherwise>
-								</c:choose></td>
-							<td>${cust.productId}</td>
-							<td>${cust.productName}</td>
-
+							<td>${order.orderId}</td>
+							<td>${order.emailId}</td>
+							<td>${order.orderDate}</td>
+							<td>${order.totalAmount}</td>
+							<td>${order.statusDescription}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -67,21 +62,21 @@
 
 			<div id="content">
 				<div align="center">
-					<c:if test="${!pagedcust.navInfo.firstPage}">
+					<c:if test="${!porder.navInfo.firstPage}">
 						<a href="existingProduct?page=0">First</a>&nbsp;
 					</c:if>
-					<c:forEach var="i" items="${pagedcust.navInfo.indexList}">
+					<c:forEach var="i" items="${porder.navInfo.indexList}">
 						<c:choose>
-							<c:when test="${i != pagedcust.navInfo.currentPage}">
-								<a href="existingProduct?page=${i}">${i}</a>&nbsp;
+							<c:when test="${i != porder.navInfo.currentPage}">
+								<a href="getOrdersList?page=${i}">${i}</a>&nbsp;
 						</c:when>
 							<c:otherwise>
 								<b>${i}</b>&nbsp;
 						</c:otherwise>
 						</c:choose>
 					</c:forEach>
-					<c:if test="${!pagedcust.navInfo.lastPage}">
-						<a href="existingProduct?page=${pagedcust.navInfo.pageCount - 1}">Last</a>
+					<c:if test="${!porder.navInfo.lastPage}">
+						<a href="getOrdersList?page=${porder.navInfo.pageCount - 1}">Last</a>
 					</c:if>
 				</div>
 			</div>

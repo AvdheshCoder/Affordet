@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.avd.dao.SellerServiceDao;
 import com.avd.model.Lu_Category;
+import com.avd.model.ProductFinalOrdersInformation;
 import com.avd.model.ProductImages;
 import com.avd.model.TblProductInformation;
 
-public class SellerServiceImpl implements SellerService{
+public class SellerServiceImpl implements SellerService {
 
-	
 	@Autowired
 	SellerServiceDao sellSrvcDao;
 
@@ -23,46 +23,44 @@ public class SellerServiceImpl implements SellerService{
 	}
 
 	@Override
-	public String saveImage(Map<String,Object> map) throws Exception {
+	public String saveImage(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.saveImage(map);
 	}
-	
+
 	@Override
 	public Integer getProductId() throws Exception {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getProductId();
 	}
-	
+
 	@Override
 	public String saveProduct(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.saveProduct(map);
 	}
-	
-	
+
 	@Override
-	public List<TblProductInformation> getProductsData(Map<String, Object> map)  {
+	public List<TblProductInformation> getProductsData(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getProductsData(map);
 	}
 
 	@Override
-	public List<TblProductInformation> getUnauthorizedProductDetails(
-			int startPage, int pageSize, Map<String, Object> map) {
+	public List<TblProductInformation> getUnauthorizedProductDetails(int startPage, int pageSize,
+			Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sellSrvcDao.getUnauthorizedProductDetails(
-				 startPage, pageSize,  map);
+		return sellSrvcDao.getUnauthorizedProductDetails(startPage, pageSize, map);
 	}
 
 	@Override
 	public int getcountProductRegistered(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sellSrvcDao.getcountProductRegistered( map);
+		return sellSrvcDao.getcountProductRegistered(map);
 	}
-	
+
 	@Override
-	public List<ProductImages> getProductImages( Map<String, Object> map) {
+	public List<ProductImages> getProductImages(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getProductImages(map);
 	}
@@ -72,5 +70,14 @@ public class SellerServiceImpl implements SellerService{
 		// TODO Auto-generated method stub
 		return sellSrvcDao.saveSliderImage(map);
 	}
-	
+
+	@Override
+	public int getcountOrders(Map<String, Object> map) {
+		return sellSrvcDao.getcountOrders(map);
+	}
+
+	@Override
+	public List<ProductFinalOrdersInformation> getAllOrderDetails(int startPage, int pageSize, Map<String, Object> map) {
+		return sellSrvcDao.getAllOrderDetails(startPage, pageSize, map);
+	}
 }

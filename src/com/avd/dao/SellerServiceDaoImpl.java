@@ -18,21 +18,18 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.avd.common.util.JdbcConnection;
 import com.avd.model.Lu_Category;
 import com.avd.model.ProductDisplayImages;
+import com.avd.model.ProductFinalOrdersInformation;
 import com.avd.model.ProductImages;
 import com.avd.model.Slider;
 import com.avd.model.TblProductInformation;
 
-public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerServiceDao{
-	
-	
-	
+public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerServiceDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -40,6 +37,7 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 	Transaction tx = null;
 	Query query = null;
 	Criteria cr = null;
+
 	@Override
 	public List<Lu_Category> getCategory(Map<String, String> map) {
 		List<Lu_Category> catList = null;
@@ -47,9 +45,7 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 		try {
 			session = sessionFactory.openSession();
 
-
-			catList = session.createCriteria(Lu_Category.class)
-					.addOrder(Order.asc("categoryName")).list();
+			catList = session.createCriteria(Lu_Category.class).addOrder(Order.asc("categoryName")).list();
 
 		} catch (Exception e) {
 
@@ -66,20 +62,18 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 	}
 
 	@Override
-	public String saveImage(Map<String,Object> map)
-			throws Exception {
+	public String saveImage(Map<String, Object> map) throws Exception {
 
-		
 		Clob a = stringToClob(map.get("mainImage").toString());
 		Clob b = stringToClob(map.get("mediumImage").toString());
 		Clob c = stringToClob(map.get("smallImage").toString());
-		
+
 		PreparedStatement ps = null;
 
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
-			
+
 			tx = session.beginTransaction();
 			ProductImages image = new ProductImages();
 			image.setProductId(new Integer(map.get("pId").toString()));
@@ -89,26 +83,19 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 			image.setProductImageMedium(b);
 			image.setImageId(new Integer(map.get("imageId").toString()));
 			session.saveOrUpdate(image);
-			
-			if("1".equals(map.get("imageId").toString()))
-			{
-			
-			
-			ProductDisplayImages imag = new ProductDisplayImages();
-			imag.setProductId(new Integer(map.get("pId").toString()));
-			imag.setCategoryId(new Integer(map.get("categoryId").toString()));
-			imag.setSubCategoryId(new Integer(map.get("subCategoryId").toString()));
-			imag.setProductImages(c);
-			
-			session.saveOrUpdate(imag);
-			
+
+			if ("1".equals(map.get("imageId").toString())) {
+
+				ProductDisplayImages imag = new ProductDisplayImages();
+				imag.setProductId(new Integer(map.get("pId").toString()));
+				imag.setCategoryId(new Integer(map.get("categoryId").toString()));
+				imag.setSubCategoryId(new Integer(map.get("subCategoryId").toString()));
+				imag.setProductImages(c);
+
+				session.saveOrUpdate(imag);
+
 			}
-			
-			
-			
-			
-			
-			
+
 			tx.commit();
 			return "1";
 		} catch (Exception e) {
@@ -124,8 +111,6 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 		}
 	}
 
-	
-	
 	private Clob stringToClob(String source) {
 		try {
 			return new javax.sql.rowset.serial.SerialClob(source.toCharArray());
@@ -133,51 +118,36 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 			return null;
 		}
 	}
-	
-	
+
 	@Override
 	public Integer getProductId() {
 		String code = "";
 		ResultSet rs = null;
 		Connection conn = null;
-		String prdctId="0";
-		Integer productId=0;
+		String prdctId = "0";
+		Integer productId = 0;
 		PreparedStatement ps = null;
 		try {
 
 			conn = new JdbcConnection().getConnection();
-			ps = conn
-					.prepareStatement("select max(id)  as cnt from TBL_PRODUCT_SEQUENCE");
+			ps = conn.prepareStatement("select max(id)  as cnt from TBL_PRODUCT_SEQUENCE");
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				prdctId= rs.getString("cnt");
+				prdctId = rs.getString("cnt");
 			}
 
-			
-			
-			if ("null".equalsIgnoreCase(prdctId) | null==prdctId | "".equals(prdctId))
-			productId=1;
-				else
-			productId= new Integer(prdctId)+1;
-					
+			if ("null".equalsIgnoreCase(prdctId) | null == prdctId | "".equals(prdctId))
+				productId = 1;
+			else
+				productId = new Integer(prdctId) + 1;
 
-			
-			
-			ps = conn
-					.prepareStatement("INSERT INTO  TBL_PRODUCT_SEQUENCE (ID) VALUES"
-							+ "  ("+productId+")");
-			
-			System.out.println("ps"+ps);
-			
+			ps = conn.prepareStatement("INSERT INTO  TBL_PRODUCT_SEQUENCE (ID) VALUES" + "  (" + productId + ")");
+
+			System.out.println("ps" + ps);
+
 			ps.executeUpdate();
 
-			
-			
-			
-			
-			
-			
 		} catch (Exception e) {
 			System.out.println("error" + e.getMessage());
 			e.printStackTrace();
@@ -208,7 +178,7 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 	public String saveProduct(Map<String, Object> map) throws Exception {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
-		
+
 		try {
 
 			tx = session.beginTransaction();
@@ -231,7 +201,7 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 	@Override
 	public List<TblProductInformation> getProductsData(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		
+
 		List<TblProductInformation> tblInfo = null;
 		Session session = null;
 		try {
@@ -255,40 +225,39 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 
 	}
 
-		
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TblProductInformation> getUnauthorizedProductDetails( int startPage, int pageSize, Map<String,Object> map) {
-		
-/*
-		System.out.println(">>>>>>getUnauthorizedEnrollmentDetails");
-		return getHibernateTemplate().findByExample(c, startPage * pageSize, pageSize);*/
-		
-		
+	public List<TblProductInformation> getUnauthorizedProductDetails(int startPage, int pageSize,
+			Map<String, Object> map) {
+
+		/*
+		 * System.out.println(">>>>>>getUnauthorizedEnrollmentDetails"); return
+		 * getHibernateTemplate().findByExample(c, startPage * pageSize,
+		 * pageSize);
+		 */
+
 		System.out.println(">>>>>>>getAllFamilyEnrollmentDetails");
 		DetachedCriteria criteria = DetachedCriteria.forClass(TblProductInformation.class);
-	
-		
-		return (List<TblProductInformation>) getHibernateTemplate().findByCriteria(criteria, startPage * pageSize, pageSize);
+
+		return (List<TblProductInformation>) getHibernateTemplate().findByCriteria(criteria, startPage * pageSize,
+				pageSize);
 
 	}
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public int getcountProductRegistered(Map<String,Object> map) {
+	public int getcountProductRegistered(Map<String, Object> map) {
 
 		System.out.println(">>>>>getcountFamilyEnrollment");
 		DetachedCriteria criteria = DetachedCriteria.forClass(TblProductInformation.class)
-			.setProjection(Projections.rowCount());
+				.setProjection(Projections.rowCount());
 		return ((Long) getHibernateTemplate().findByCriteria(criteria).get(0)).intValue();
 	}
-	
-	
-	
-	
+
 	@Override
 	public List<ProductImages> getProductImages(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		
+
 		List<ProductImages> tblInfo = null;
 		Session session = null;
 		try {
@@ -312,29 +281,23 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 
 	}
 
-
 	@Override
-	public String saveSliderImage(Map<String,Object> map)
-			throws Exception {
+	public String saveSliderImage(Map<String, Object> map) throws Exception {
 
-		
-				Clob b = stringToClob(map.get("image").toString());
-	
-		
+		Clob b = stringToClob(map.get("image").toString());
+
 		PreparedStatement ps = null;
 
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
-			
+
 			tx = session.beginTransaction();
 			Slider image = new Slider();
 			image.setIsActive("1");
-						image.setImage(b);
-					session.saveOrUpdate(image);
-			
-			
-			
+			image.setImage(b);
+			session.saveOrUpdate(image);
+
 			tx.commit();
 			return "1";
 		} catch (Exception e) {
@@ -350,6 +313,28 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 		}
 	}
 
-	
-		
+	@SuppressWarnings("unchecked")
+	@Override
+	public int getcountOrders(Map<String, Object> map) {
+
+		System.out.println(">>>>>getcountFamilyEnrollment");
+		DetachedCriteria criteria = DetachedCriteria.forClass(ProductFinalOrdersInformation.class)
+				.add(Restrictions.le("statusId", 5)).setProjection(Projections.rowCount());
+		System.out.println("value is "+(Long) getHibernateTemplate().findByCriteria(criteria).get(0));
+		return ((Long) getHibernateTemplate().findByCriteria(criteria).get(0)).intValue();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProductFinalOrdersInformation> getAllOrderDetails(int startPage, int pageSize,
+			Map<String, Object> map) {
+
+		System.out.println(">>>>>>>getAllFamilyEnrollmentDetails");
+		DetachedCriteria criteria = DetachedCriteria.forClass(ProductFinalOrdersInformation.class);
+		criteria.add(Restrictions.le("statusId", 5)).addOrder(Order.desc("orderDate"));
+		return (List<ProductFinalOrdersInformation>) getHibernateTemplate().findByCriteria(criteria,
+				startPage * pageSize, pageSize);
+
+	}
+
+}

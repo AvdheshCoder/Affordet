@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+	pageEncoding="ISO-8859-1"%>
+
 <%@ page session="true"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -126,6 +126,8 @@
 										file="/WEB-INF/views/SellerAddProduct.jsp"%></c:when>
 								<c:when test="${map.menuType == '2'}"><%@ include
 										file="/WEB-INF/views/existingProduct.jsp"%></c:when>
+								<c:when test="${map.menuType == '4'}"><%@ include
+										file="/WEB-INF/views/ListOrder.jsp"%></c:when>
 							</c:choose>
 
 
@@ -204,8 +206,7 @@
 
 			imageVal = document.getElementById(imgId).value.split('.');
 			var ext = imageVal[imageVal.length - 1].toLowerCase();
-			if ((ext != 'jpg') && (ext != 'jpeg')
-					&& (ext != 'png')) {
+			if ((ext != 'jpg') && (ext != 'jpeg') && (ext != 'png')) {
 				alert("कृपया फाइल jpg, jpeg, png फॉर्मेट में चुने|");
 				return false;
 			}
@@ -218,8 +219,8 @@
 			oMyForm.append("pId", document.getElementById("productId").value);
 			oMyForm.append("categoryId",
 					document.getElementById("categoryId").value);
-		 	oMyForm.append("subCategoryId", document
-					.getElementById("subCategoryId").value); 
+			oMyForm.append("subCategoryId", document
+					.getElementById("subCategoryId").value);
 			loader('chakri');
 			$
 					.ajax({
@@ -240,6 +241,11 @@
 						}
 					});
 
+		}
+
+		function listOrders() {
+			document.sellerform.action = "getOrdersList";
+			document.sellerform.submit();
 		}
 	</script>
 </body>

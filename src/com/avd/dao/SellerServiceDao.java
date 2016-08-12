@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.avd.model.Lu_Category;
+import com.avd.model.ProductFinalOrdersInformation;
 import com.avd.model.ProductImages;
 import com.avd.model.TblProductInformation;
 
@@ -29,7 +30,8 @@ public interface SellerServiceDao {
 	
 	String saveSliderImage(Map<String,Object> map) throws Exception;
 
-	
+	public int getcountOrders( Map<String,Object> map);
+	List<ProductFinalOrdersInformation> getAllOrderDetails(int startPage, int pageSize, Map<String, Object> map);
 
 
 }

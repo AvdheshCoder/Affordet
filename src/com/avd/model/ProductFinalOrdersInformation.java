@@ -8,18 +8,17 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
-
 /**
  * The persistent class for the product_final_orders_information database table.
  * 
  */
 @Entity
-@Table(name="product_final_orders_information")
+@Table(name = "product_final_orders_information")
 public class ProductFinalOrdersInformation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="order_id")
+	@Column(name = "order_id")
 	private String orderId;
 
 	private String address;
@@ -27,101 +26,93 @@ public class ProductFinalOrdersInformation implements Serializable {
 	private String name;
 	private String cod;
 
-	@Column(name="COD_CHARGES")
-	private int codCharges;
+	@Column(name = "COD_CHARGES")
+	private Integer codCharges;
 
-	@Column(name="CUSTOMER_FINALIZE")
-	private int customerFinalize;
+	@Column(name = "CUSTOMER_FINALIZE")
+	private Integer customerFinalize;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="delivered_date")
+	@Column(name = "delivered_date")
 	private Date deliveredDate;
 
-	@Column(name="email_id")
+	@Column(name = "email_id")
 	private String emailId;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="expected_delivery_date")
+	@Column(name = "expected_delivery_date")
 	private Date expectedDeliveryDate;
 
-	@Column(name="GIFT_WRAP_CHARGES")
-	private int giftWrapCharges;
+	@Column(name = "GIFT_WRAP_CHARGES")
+	private Integer giftWrapCharges;
 
-	@Column(name="mobile_no")
+	@Column(name = "mobile_no")
 	private String mobileNo;
 
-	@Column(name="ODD_CHARGES")
-	private int oddCharges;
+	@Column(name = "ODD_CHARGES")
+	private Integer oddCharges;
 
-	@Column(name="ONE_DAY_DELIVERY")
+	@Column(name = "ONE_DAY_DELIVERY")
 	private String oneDayDelivery;
 
-	@Column(name="order_date")
+	@Column(name = "order_date")
 	private Timestamp orderDate;
 
-	@Column(name="payment_type")
+	@Column(name = "payment_type")
 	private String paymentType;
 
-	@Column(name="pin_code")
-	private int pinCode;
+	@Column(name = "pin_code")
+	private Integer pinCode;
 
-	
-	@Column(name="SELLER_FINALIZE")
-	private int sellerFinalize;
+	@Column(name = "SELLER_FINALIZE")
+	private Integer sellerFinalize;
 
-	@Column(name="STATUS_ID")
-	private int statusId;
+	@Column(name = "STATUS_ID")
+	private Integer statusId;
 
-	@Column(name="total_amount")
-	private int totalAmount;
+	@Column(name = "total_amount")
+	private Integer totalAmount;
 
-
-	@Column(name="LOGIN_ID")
+	@Column(name = "LOGIN_ID")
 	private String loginId;
 
-	
+	@Column(name = "STATUS_DESCRIPTION")
+	private String statusDescription;
+
+	public String getStatusDescription() {
+		return statusDescription;
+	}
+
+	public void setStatusDescription(String statusDescription) {
+		this.statusDescription = statusDescription;
+	}
+
 	public ProductFinalOrdersInformation() {
 	}
-	
-	
 
 	public String getLoginId() {
 		return loginId;
 	}
 
-
-
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
-
-
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
-
 
 	public String getOrderId() {
 		return orderId;
 	}
 
-
-
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
-
-
 
 	public String getAddress() {
 		return this.address;
@@ -139,19 +130,19 @@ public class ProductFinalOrdersInformation implements Serializable {
 		this.cod = cod;
 	}
 
-	public int getCodCharges() {
+	public Integer getCodCharges() {
 		return this.codCharges;
 	}
 
-	public void setCodCharges(int codCharges) {
+	public void setCodCharges(Integer codCharges) {
 		this.codCharges = codCharges;
 	}
 
-	public int getCustomerFinalize() {
+	public Integer getCustomerFinalize() {
 		return this.customerFinalize;
 	}
 
-	public void setCustomerFinalize(int customerFinalize) {
+	public void setCustomerFinalize(Integer customerFinalize) {
 		this.customerFinalize = customerFinalize;
 	}
 
@@ -179,11 +170,11 @@ public class ProductFinalOrdersInformation implements Serializable {
 		this.expectedDeliveryDate = expectedDeliveryDate;
 	}
 
-	public int getGiftWrapCharges() {
+	public Integer getGiftWrapCharges() {
 		return this.giftWrapCharges;
 	}
 
-	public void setGiftWrapCharges(int giftWrapCharges) {
+	public void setGiftWrapCharges(Integer giftWrapCharges) {
 		this.giftWrapCharges = giftWrapCharges;
 	}
 
@@ -195,11 +186,11 @@ public class ProductFinalOrdersInformation implements Serializable {
 		this.mobileNo = mobileNo;
 	}
 
-	public int getOddCharges() {
+	public Integer getOddCharges() {
 		return this.oddCharges;
 	}
 
-	public void setOddCharges(int oddCharges) {
+	public void setOddCharges(Integer oddCharges) {
 		this.oddCharges = oddCharges;
 	}
 
@@ -227,36 +218,35 @@ public class ProductFinalOrdersInformation implements Serializable {
 		this.paymentType = paymentType;
 	}
 
-	public int getPinCode() {
+	public Integer getPinCode() {
 		return this.pinCode;
 	}
 
-	public void setPinCode(int pinCode) {
+	public void setPinCode(Integer pinCode) {
 		this.pinCode = pinCode;
 	}
 
-
-	public int getSellerFinalize() {
+	public Integer getSellerFinalize() {
 		return this.sellerFinalize;
 	}
 
-	public void setSellerFinalize(int sellerFinalize) {
+	public void setSellerFinalize(Integer sellerFinalize) {
 		this.sellerFinalize = sellerFinalize;
 	}
 
-	public int getStatusId() {
+	public Integer getStatusId() {
 		return this.statusId;
 	}
 
-	public void setStatusId(int statusId) {
+	public void setStatusId(Integer statusId) {
 		this.statusId = statusId;
 	}
 
-	public int getTotalAmount() {
+	public Integer getTotalAmount() {
 		return this.totalAmount;
 	}
 
-	public void setTotalAmount(int totalAmount) {
+	public void setTotalAmount(Integer totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 
