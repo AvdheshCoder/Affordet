@@ -11,7 +11,8 @@
 <head>
 <title>Seller Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript">
+	<script type="application/x-javascript">
+		
 	
 	
 	
@@ -26,10 +27,11 @@
 	 }
 
 
-</script>
-<link href="style/style9.css" rel='stylesheet' type='text/css' />
-<!-- fonts -->
-<!-- fonts -->
+
+	</script>
+	<link href="style/style9.css" rel='stylesheet' type='text/css' />
+	<!-- fonts -->
+	<!-- fonts -->
 </head>
 <body>
 	<!-- login-form-->
@@ -42,13 +44,14 @@
 					<span>Email:</span>
 					<c:choose>
 						<c:when test="${map.errorMsg == '1'}">
-							<input type="text" class="form-control" id="emailId"
-								name="emailId" value="${map.emailId}" onfocus="this.value = '';"
+							<input type="text" class="form-control" id="sellerId"
+								name="sellerId" value="${map.emailId}"
+								onfocus="this.value = '';"
 								onblur="if (this.value == '') {this.value = 'Your Email here';}" />
 						</c:when>
 						<c:otherwise>
-							<input type="text" class="form-control" id="emailId"
-								name="emailId" value="Your Email here"
+							<input type="text" class="form-control" id="sellerId"
+								name="sellerId" value="Your Email here"
 								onfocus="this.value = '';"
 								onblur="if (this.value == '') {this.value = 'Your Email here';}" />
 						</c:otherwise>
@@ -58,7 +61,8 @@
 				</div>
 				<div class="password">
 					<span>Password:</span> <input type="password" class="form-control"
-						id="pass" name="pass" value="123456789" onfocus="this.value = '';"
+						id="sellerPassword" name="sellerPassword" value="123456789"
+						onfocus="this.value = '';"
 						onblur="if (this.value == '') {this.value = '123456789';}" />
 					<div class="clear"></div>
 				</div>
@@ -72,9 +76,7 @@
 		<!--form-left-->
 		<!--copy-right-->
 		<div class="copy-right">
-			<p>
-				Design By GG Solutions
-			</p>
+			<p>Design By GG Solutions</p>
 		</div>
 		<div class="clear"></div>
 		<!--copy-right-->

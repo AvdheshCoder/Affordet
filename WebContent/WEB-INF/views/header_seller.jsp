@@ -112,7 +112,7 @@
 					<div class="header-bottom-right">
 						<c:choose>
 
-							<c:when test="${loginName eq '' || loginName eq null}">
+							<c:when test="${sellerLoginName eq '' || sellerLoginName eq null}">
 
 								
 								<ul class="login">
@@ -126,7 +126,7 @@
 							</c:when>
 							<c:otherwise>
 								<div class="account">
-									<a href="#"><span></span></a> <font size='3'><b>${loginName}</b></font>
+									<a href="#"><span></span></a> <font size='3'><b>${sellerLoginName}</b></font>
 								</div>
 							</c:otherwise>
 						</c:choose>
@@ -139,7 +139,7 @@
 
 						<c:choose>
 
-							<c:when test="${loginName eq '' || loginName eq null}">
+							<c:when test="${sellerLoginName eq '' || sellerLoginName eq null}">
 							</c:when>
 							<c:otherwise>
 								<form id="logout" name="logout" method="post"></form>

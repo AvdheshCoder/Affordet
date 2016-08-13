@@ -40,5 +40,6 @@ public interface CustomerServiceDao {
 	public String addReview(Map<String,Object> map);
 	public List<Object[]> getProductReview(Map<String,Object> map);
 	public List<Object[]> getTrackDesc(Map<String,Object> map);
+	public String getNextStatus(String orderId);
 	
 }

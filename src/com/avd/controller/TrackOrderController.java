@@ -21,92 +21,88 @@ public class TrackOrderController {
 
 	@Autowired
 	CustomerService customerServc;
-	
+
 	@RequestMapping("/trackOrder")
-	public ModelAndView trackOrder(HttpServletRequest req,
-			HttpServletResponse res) {
+	public ModelAndView trackOrder(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession(false);
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Object[]> dat = new ArrayList<Object[]>();
-		
-		
-		
-		String cartProduct="0";
-		
-		String view="";
-		if(session!=null && session.getAttribute("loginId")!=null)
-		{
-		String loginId=session.getAttribute("loginId").toString();
-		map.put("loginId", loginId);
-		map.put("flag", "1");
-		dat= customerServc.getOrderDetails(map);
-		map.put("cartProductsDesc", dat);
-		cartProduct=customerServc.getCartProducts(map);
-		map.put("productInCart", cartProduct);
-				
-		view="trackCart";
+
+		String cartProduct = "0";
+
+		String view = "";
+		if (session != null && session.getAttribute("loginId") != null) {
+			String loginId = session.getAttribute("loginId").toString();
+			map.put("loginId", loginId);
+			map.put("flag", "1");
+			dat = customerServc.getOrderDetails(map);
+			map.put("cartProductsDesc", dat);
+			cartProduct = customerServc.getCartProducts(map);
+			map.put("productInCart", cartProduct);
+
+			view = "trackCart";
+		} else {
+			view = "trackOrder";
 		}
-		else{
-			view="trackOrder";
-		}						
-	
-		return new ModelAndView(view, "map", map);	
-}
-	
-	
+
+		return new ModelAndView(view, "map", map);
+	}
+
 	@RequestMapping("/trackOrderSpecific")
-	public ModelAndView trackOrderSpecific(HttpServletRequest req,
-			HttpServletResponse res) {
+	public ModelAndView trackOrderSpecific(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession(false);
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Object[]> dat = new ArrayList<Object[]>();
-		String orderId=req.getParameter("orderId");
+		String orderId = req.getParameter("orderId");
 		map.put("orderId", orderId);
 		map.put("flag", "2");
-		
-		dat= customerServc.getOrderDetails(map);
+
+		dat = customerServc.getOrderDetails(map);
 		map.put("cartProductsDesc", dat);
-		String cartProduct="0";
-	if(session!=null &&session.getAttribute("logId")!=null){
-			String loginId=session.getAttribute("logId").toString();
-			map.put("loginId", loginId);			
-			cartProduct=customerServc.getCartProducts(map);
+		String cartProduct = "0";
+		if (session != null && session.getAttribute("logId") != null) {
+			String loginId = session.getAttribute("logId").toString();
+			map.put("loginId", loginId);
+			cartProduct = customerServc.getCartProducts(map);
 			map.put("productInCart", cartProduct);
-		
+
+		}
+
+		String view = "trackCart";
+		return new ModelAndView(view, "map", map);
 	}
-		
-		
-		String view="trackCart";
-		return new ModelAndView(view, "map", map);	
-}
-	
-	
+
 	@RequestMapping("/trackOrderDetails")
-	public ModelAndView trackOrderDetails(HttpServletRequest req,
-			HttpServletResponse res) {
+	public ModelAndView trackOrderDetails(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession(false);
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Object[]> dat = new ArrayList<Object[]>();
 		List<Object[]> dat1 = new ArrayList<Object[]>();
-		String orderId=req.getParameter("orderId");
+		String orderId = req.getParameter("orderId");
+		String nextStatus = null;
 		map.put("orderId", orderId);
 		map.put("flag", "2");
-		
-		dat= customerServc.getOrderDetails(map);
-		dat1= customerServc.getTrackDesc(map);
+
+		dat = customerServc.getOrderDetails(map);
+		dat1 = customerServc.getTrackDesc(map);
 		map.put("cartProductsDesc", dat);
 		map.put("cartProductsDesc1", dat1);
-		String cartProduct="0";
-	if(session!=null &&session.getAttribute("logId")!=null){
-			String loginId=session.getAttribute("logId").toString();
-			map.put("loginId", loginId);			
+
+		String cartProduct = "0";
+		if (session != null && session.getAttribute("logId") != null && session.getAttribute("loginName") != null) {
+			System.out.println("inside if block" + session.getAttribute("logId").toString());
+			String loginId = session.getAttribute("logId").toString();
+			map.put("loginId", loginId);
+		} else if (session != null && session.getAttribute("sellerId") != null) {
+			System.out.println("inside else block");
+			map.put("sellerId", session.getAttribute("sellerId").toString());
+			nextStatus = customerServc.getNextStatus(orderId);
+			map.put("nextStatusId", nextStatus.split(",")[0]);
+			map.put("nextStatusDesc", nextStatus.split(",")[1]);
 		}
-		
-		
-		String view="trackOrderDetails";
-		return new ModelAndView(view, "map", map);	
-}
-	
-	
-	
+
+		String view = "trackOrderDetails";
+		return new ModelAndView(view, "map", map);
+	}
+
 }

@@ -55,19 +55,25 @@ public class SellerController {
 
 	@RequestMapping("/sellerLogin")
 	public ModelAndView sellerLogin(HttpServletRequest httpReq, HttpServletResponse httpResp) {
-		return new ModelAndView("sellerLogin");
+		HttpSession session = httpReq.getSession(false);
+		if (session != null && session.getAttribute("sellerLoginName") != null) {
+			return new ModelAndView("redirect:sellerEnd");
+		} else {
+			return new ModelAndView("sellerLogin");
+		}
+
 	}
 
 	@RequestMapping("/validateSeller")
 	public ModelAndView validateSeller(HttpServletRequest httpReq, HttpServletResponse httpResp) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		HttpSession session = httpReq.getSession(false);
-		if (httpReq.getParameter("emailId") == null || httpReq.getParameter("pass").trim() == null) {
+		if (httpReq.getParameter("sellerId") == null || httpReq.getParameter("sellerPassword").trim() == null) {
 			map.put("msg", "Please provide emailId and Password");
 			map.put("errorMsg", "1");
 			return new ModelAndView("sellerLogin", "map", map);
-		} else if ("manish.gupta@gmail.com".equals(httpReq.getParameter("emailId").trim())
-				&& "manish123".equals(httpReq.getParameter("pass").trim())) {
+		} else if ("manish.gupta@gmail.com".equals(httpReq.getParameter("sellerId").trim())
+				&& "manish123".equals(httpReq.getParameter("sellerPassword").trim())) {
 			try {
 				System.out.println("goin to get Product id");
 				Integer productId = sellServc.getProductId();
@@ -75,11 +81,11 @@ public class SellerController {
 				httpReq.getSession().setAttribute("productId", productId);
 
 				// Adding values to session
-				session.setAttribute("loginId", "admin");
-				session.setAttribute("loginName", "admin");
-				session.setAttribute("emailId", "manish.gupta@gmail.com");
+				session.setAttribute("sellerId", "Admin");
+				session.setAttribute("sellerLoginName", "Admin");
+				session.setAttribute("sellerEmailId", "manish.gupta@gmail.com");
 				session.setAttribute("loginFlag", "1");
-				map.put("loginName", "admin");
+				map.put("sellerLoginName", "admin");
 				// map.put(key, value)
 				return new ModelAndView("redirect:sellerEnd", "map", map);
 			} catch (Exception ex) {
@@ -104,18 +110,29 @@ public class SellerController {
 	public ModelAndView sellerEnd(HttpServletRequest httpReq, HttpServletResponse httpResp) {
 		Map<String, String> mapper = new HashMap<String, String>();
 		Map<String, Object> map = new HashMap<String, Object>();
-		List<Lu_Category> catList = sellServc.getCategory(mapper);
-		System.out.println("going on seller Page");
-		map.put("catList", catList);
+		HttpSession session = httpReq.getSession(false);
 		try {
-			String productId = httpReq.getSession().getAttribute("productId").toString();
-			map.put("productId", productId);
+			System.out.println("seller id is " + session.getAttribute("sellerId").toString());
+			if (session.getAttribute("sellerId") != null) {
+				List<Lu_Category> catList = sellServc.getCategory(mapper);
+				System.out.println("going on seller Page");
+				map.put("catList", catList);
+				try {
+					String productId = httpReq.getSession().getAttribute("productId").toString();
+					map.put("productId", productId);
 
+				} catch (Exception ex) {
+				}
+				map.put("menuType", "1");
+
+				return new ModelAndView("sellerEnd", "map", map);
+			} else {
+				return new ModelAndView("redirect:sellerLogin", "map", map);
+			}
 		} catch (Exception ex) {
+			ex.printStackTrace();
+			return new ModelAndView("redirect:sellerLogin", "map", map);
 		}
-		map.put("menuType", "1");
-
-		return new ModelAndView("sellerEnd", "map", map);
 
 	}
 
@@ -552,9 +569,10 @@ public class SellerController {
 		porderv.setOrderInfo(sellServc.getAllOrderDetails(porderv.getNavInfo().getCurrentPage(),
 				porderv.getNavInfo().getPageSize(), map));
 
-		httpReq.getSession().setAttribute("pagedOrd", porderv);
-		System.out.println("information size is "+porderv.getordersInfo().size());
+		httpReq.getSession().setAttribute("porder", porderv);
+		System.out.println("information size is " + porderv.getordersInfo().size());
 		model.put("porder", porderv);
+		map.put("porder", porderv);
 
 		httpReq.setAttribute("page", page);
 		map.put("menuType", "4");

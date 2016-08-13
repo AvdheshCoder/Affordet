@@ -26,30 +26,33 @@
 				</h3>
 			</td>
 		</tr>
-	</table>${fn:length(porder.ordersInfo)}
+	</table>
 	<c:choose>
 		<c:when test="${fn:length(porder.ordersInfo)>0}">
 			<table id="tbl_report" align="center" cellpadding="3" cellspacing="2"
 				border="0" class="gridviewnew" style="width: 97%; padding: 5px;">
-				<thead>
+				<thead style="background-color: #E0E0D1">
 					<tr>
-						<th width="15">Select</th>
-						<th width="10">Order Id</th>
-						<th width="10">Order by</th>
-						<th width="10">Order Date</th>
-						<th width="10">Order Total Amount</th>
-						<th width="10">Order Status</th>
+
+						<th width="23%">Order Id</th>
+						<th width="20%">Order by</th>
+						<th width="20%">Order Date</th>
+						<th width="20%">Order Total Amount</th>
+						<th width="20%">Order Status</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="order" items="${porder.ordersInfo}"
 						varStatus="status">
 						<tr>
-							<td><input type='radio' name='selection' value=""
+							<%-- <td><input type='radio' name='selection' value=""
 								id='selRd2'
 								onclick="load_product('editProduct','bhDtl','chakri', 'productId=${cust.productId}');">
-							</td>
-							<td>${order.orderId}</td>
+							</td> --%>
+							<td align="left"><a class="now-get get-cart-in"
+								style="float: left;" rel="ibox"
+								href="trackOrderDetails?orderId=${order.orderId}" id='bef'><span>
+										${order.orderId}</span></a></td>
 							<td>${order.emailId}</td>
 							<td>${order.orderDate}</td>
 							<td>${order.totalAmount}</td>

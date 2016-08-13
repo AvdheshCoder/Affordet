@@ -10,10 +10,8 @@ import com.avd.model.ProductImages;
 import com.avd.model.TblProductInformation;
 import com.avd.service.vo.ProductMenu;
 
+public class CustomerServiceImpl implements CustomerService {
 
-public class CustomerServiceImpl implements CustomerService{
-
-	
 	@Autowired
 	CustomerServiceDao sellSrvcDao;
 
@@ -22,14 +20,13 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getProductInfo(map);
 	}
-	
+
 	@Override
 	public List<Object[]> getSelectedProductImages(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getSelectedProductImages(map);
 	}
-	
-	
+
 	@Override
 	public String signup(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -53,13 +50,13 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return sellSrvcDao.authenticateSignup(map);
 	}
-	
+
 	@Override
 	public String authenticateLogin(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.authenticateLogin(map);
 	}
-	
+
 	@Override
 	public List<Object[]> getLoginCredentials(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -69,16 +66,16 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public List<TblProductInformation> getProductData(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-			return sellSrvcDao.getProductData(map);
-
+		return sellSrvcDao.getProductData(map);
 
 	}
-	
+
 	@Override
 	public String getCartProducts(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getCartProducts(map);
 	}
+
 	@Override
 	public String getCartProductId(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -90,18 +87,19 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getArtificalId();
 	}
-	
+
 	@Override
 	public String saveToCart(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.saveToCart(map);
 	}
+
 	@Override
 	public List<Object[]> getCartProductsDesc(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getCartProductsDesc(map);
 	}
-	
+
 	@Override
 	public String removeProducts(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -160,35 +158,39 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		return sellSrvcDao.saveComplain(map);
 	}
-	
-	
-	
+
 	@Override
 	public List<Object[]> getShowProducts(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getShowProducts(map);
 	}
+
 	@Override
 	public List<Object[]> productOfTheDay(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.productOfTheDay(map);
 	}
-	
+
 	@Override
 	public String addReview(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.addReview(map);
 	}
-	
+
 	@Override
 	public List<Object[]> getProductReview(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getProductReview(map);
 	}
-	
+
 	@Override
 	public List<Object[]> getTrackDesc(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sellSrvcDao.getTrackDesc(map);
+	}
+
+	@Override
+	public String getNextStatus(String orderId) {
+		return sellSrvcDao.getNextStatus(orderId);
 	}
 }
