@@ -210,7 +210,9 @@ img {
 					<table>
 						<tr>
 							<td width="50%"><h4>
-									Id: <font color="blue"> ${listItem[1]}</font>
+									Id: <font color="blue"> ${listItem[1]}<c:set
+											var="orderId" value="${listItem[1]}"></c:set>
+									</font>
 								</h4></td>
 							<td width="50%"><h4>
 									Status <font color="green"> <c:set var="stat"
@@ -306,24 +308,50 @@ img {
 					</div>
 					<br></br>
 					<c:if test="${map.sellerId != null}">
-						<div style="float: left;">
-							<table>
+						<c:choose>
+							<c:when
+								test="${map.nextStatusId == '2' or map.nextStatusId == '3'}">
+								<div style="float: left;">
+									<table>
 
-								<thead style="background-color: #E0E0D1">
-								</thead>
-								<tbody style="padding: 1px;">
-									<tr>
-										<td>Update status:</td>
-										<td><font color="green" size="2"><a
-												href="updateOrderStatus?statusId=${map.nextStatusId}"
-												id='bef'> ${map.nextStatusDesc}</a></font></td>
-									</tr>
-								</tbody>
+										<thead style="background-color: #E0E0D1">
+										</thead>
+										<tbody style="padding: 1px;">
+											<tr>
+												<td>Update status:</td>
+												<td><font color="green" size="2"><a
+														href="updateOrderStatus?statusId=${map.nextStatusId}&orderId=${orderId}&statusDescd=${map.nextStatusDesc}"
+														id='bef'> ${map.nextStatusDesc}</a></font>&nbsp;&nbsp;|&nbsp;&nbsp;<font
+													color="green" size="2"><a
+														href="updateOrderStatus?statusId=5&orderId=${orderId}&statusDescd=CANCEL"
+														id='bef'> CANCEL</a></font></td>
+											</tr>
+										</tbody>
+									</table>
 
-							</table>
+								</div>
+							</c:when>
+							<c:when test="${map.nextStatusId != 5}">
+								<div style="float: left;">
+									<table>
 
-						</div>
+										<thead style="background-color: #E0E0D1">
+										</thead>
+										<tbody style="padding: 1px;">
+											<tr>
+												<td>Update status:</td>
+												<td><font color="green" size="2"><a
+														href="updateOrderStatus?statusId=${map.nextStatusId}&orderId=${orderId}&statusDescd=${map.nextStatusDesc}"
+														id='bef'> ${map.nextStatusDesc}</a></font></td>
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+							</c:when>
+						</c:choose>
 					</c:if>
+
 
 
 				</form>

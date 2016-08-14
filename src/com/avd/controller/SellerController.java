@@ -573,7 +573,9 @@ public class SellerController {
 		System.out.println("information size is " + porderv.getordersInfo().size());
 		model.put("porder", porderv);
 		map.put("porder", porderv);
-
+		if(httpReq.getSession().getAttribute("orderUpdateStatus") != null){
+			map.put("orderUpdtStatus", httpReq.getSession().getAttribute("orderUpdateStatus").toString());
+		}
 		httpReq.setAttribute("page", page);
 		map.put("menuType", "4");
 		return new ModelAndView("sellerEnd", "map", map);

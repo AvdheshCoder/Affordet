@@ -136,7 +136,20 @@
 						<script src="js/jquery.wmuSlider.js"></script>
 					</div>
 				</div>
+				<c:if test="${map.orderUpdtStatus != null}">
+					<c:choose>
+						<c:when test="${map.orderUpdtStatus == '1'}">
+							<font color="green" size="3">Order has been updated
+								successfully.</font>
+						</c:when>
+						<c:otherwise>
+							<font color="red" size="3">Order Can not be updated.
+								Please try again later.</font>
+						</c:otherwise>
+					</c:choose>
+				</c:if>
 			</div>
+
 
 			<%@ include file="/WEB-INF/views/SellerActionMenu.jsp"%>
 

@@ -1233,4 +1233,45 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 		}
 	}
 
+	@SuppressWarnings("finally")
+	@Override
+	public String updateOrderStatus(String statusId, String orderId, String statusDesc) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		String result = null;
+		try {
+			tx = session.beginTransaction();
+			Criteria cr = session.createCriteria(ProductFinalOrdersInformation.class);
+			cr.add(Restrictions.eqOrIsNull("orderId", orderId));
+			List<ProductFinalOrdersInformation> finalOrObj = cr.list();
+			if (finalOrObj.size() > 0) {
+				ProductFinalOrdersInformation obj = finalOrObj.get(0);
+				obj.setStatusId(new Integer(statusId));
+				obj.setStatusDescription(statusDesc);
+				if ("2".equals(statusId)) {
+					obj.setConfirmedOn(new Timestamp(new Date().getTime()));
+				} else if ("3".equals(statusId)) {
+					obj.setDispatchedOn(new Timestamp(new Date().getTime()));
+				} else if ("4".equals(statusId)) {
+					obj.setDeliveredDate(new Timestamp(new Date().getTime()));
+				} else if ("5".equals(statusId)) {
+					obj.setRejecedOn(new Timestamp(new Date().getTime()));
+				}				session.update(obj);
+				tx.commit();
+				result = "1";
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+
+			result = "0";
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+			return result;
+
+		}
+
+	}
+
 }

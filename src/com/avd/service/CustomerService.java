@@ -43,6 +43,7 @@ public interface CustomerService {
 	public List<Object[]> getProductReview(Map<String,Object> map);
 	public List<Object[]> getTrackDesc(Map<String,Object> map);
 	public String getNextStatus(String orderId);
+	public String updateOrderStatus(String statusId, String orderId, String statusDesc);
 	
 	
 }

@@ -105,4 +105,22 @@ public class TrackOrderController {
 		return new ModelAndView(view, "map", map);
 	}
 
+	@RequestMapping("/updateOrderStatus")
+	public ModelAndView updateOrderStatus(HttpServletRequest req, HttpServletResponse res) {
+		HttpSession session = req.getSession(false);
+		String statusId = req.getParameter("statusId");
+		String orderId = req.getParameter("orderId");
+		String statusDesc = req.getParameter("statusDescd");
+		String result = null;
+		try {
+			result = customerServc.updateOrderStatus(statusId, orderId, statusDesc);
+			System.out.println("order updation status is "+result);
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		session.setAttribute("orderUpdateStatus", result);
+		return new ModelAndView("redirect:getOrdersList");
+	}
+
 }

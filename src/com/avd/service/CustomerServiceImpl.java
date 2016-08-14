@@ -193,4 +193,9 @@ public class CustomerServiceImpl implements CustomerService {
 	public String getNextStatus(String orderId) {
 		return sellSrvcDao.getNextStatus(orderId);
 	}
+	
+	@Override
+	public String updateOrderStatus(String statusId, String orderId, String statusDesc){
+		return sellSrvcDao.updateOrderStatus(statusId, orderId, statusDesc);
+	}
 }
