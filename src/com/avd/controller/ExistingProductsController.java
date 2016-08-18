@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.avd.model.Lu_Category;
 import com.avd.model.ProductImages;
 import com.avd.model.TblProductInformation;
 import com.avd.service.SellerService;
@@ -41,7 +42,9 @@ public class ExistingProductsController {
 		map.put("productId", productId);
 		
 		List<TblProductInformation> productData= sellServc.getProductsData(map);
-		
+		List<Lu_Category> catList = sellServc.getCategory(null);
+		System.out.println("going on seller Page");
+		map.put("catList", catList);
 		
 		
 		List<ProductImages> productImages = sellServc.getProductImages(map);

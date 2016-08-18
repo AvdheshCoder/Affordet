@@ -16,6 +16,8 @@
 							
 							<input type="hidden"
 								id="productId" name="productId" value="${listItems.productId}"></input>
+								<input type="hidden"
+								id="subCategoryId" name="subCategoryId" value="${listItems.subCategoryId}"></input>
 										<input type="hidden"
 								id="sellerId" name="sellerId" value="${listItems.sellerId}"></input>
 								
@@ -68,7 +70,17 @@
 									<option value="0">Please Select category</option>
 
 									<c:forEach var="listItem" items="${map.catList}">
-										<option value="${listItem.categoryId}">${listItem.categoryName}</option>
+									
+									
+									<c:choose>
+									<c:when test="${listItems.categoryId eq listItem.categoryId}">
+									<option value="${listItem.categoryId}" selected>${listItem.categoryName}</option>
+									</c:when>
+									<c:otherwise>
+									<option value="${listItem.categoryId}">${listItem.categoryName}</option>
+									</c:otherwise>
+									</c:choose>
+										
 
 
 
@@ -197,7 +209,7 @@
 				<table width="98%" border="0" cellspacing="0" cellpadding="4"
 						class="nom">
 											
-<c:forEach var="listItems" items="${map.productImages}">
+
 						
 						<tr>
 							<td width='10%'> <font color="red">Main Image</font></td>
@@ -244,5 +256,25 @@
 						</tr>
 						
 
-</c:forEach>
 					</table>
+					
+					
+					
+					
+<table class="nom" width="100%">
+
+	<tr>
+		<td colspan="2" align="center"><input type="button"
+			value="submit" onclick="add();"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><c:choose>
+				<c:when test="${map.successSaved == '1'}">
+					<font color="green">Product added successfully.</font>
+				</c:when>
+				<c:when test="${map.successSaved == '2'}">
+					<font color="green">There is some problem. Please contact
+						admin.</font>
+				</c:when>
+			</c:choose></td>
+</table>

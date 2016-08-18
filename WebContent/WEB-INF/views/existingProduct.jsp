@@ -96,6 +96,8 @@
 
 		</c:choose>
 
+
+
 	<div id="bhDtl"></div>
 
 </form>

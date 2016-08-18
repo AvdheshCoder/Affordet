@@ -343,7 +343,9 @@ img{max-width:100%;}
 
 
 <div id="light" class="white_content">
+
 <div id="chakri1"></div>
+ 
 
 		<%-- 	<form name="login" id="login" method="post">
 			<a href="${link}" ><img src="images/close_red.png" align="right" style="top:19px;right:10px; position:relative" /></a>
@@ -381,7 +383,9 @@ img{max-width:100%;}
 					
 					
 						<div class="login-01">
-						
+						<div id="wait_login" align="center" style="display: none; width: 105%; height: 270%; z-index: 1; background-color: gray; opacity: 0.5; border: 1px solid black; position: absolute; padding: 2px;">
+		<img style="margin-top: 150px;" src='<%=request.getContextPath()%>/images/spinnerLarge.gif' width="80"	height="80" /><br>
+	</div>
 		<div class="one-login  hvr-float-shadow">
 			<div class="one-login-head">
 		 <div class="lb-close-btn" onclick="closeIt();"></div> 

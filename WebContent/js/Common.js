@@ -1609,7 +1609,7 @@ else{
 }
 
 function mainLogIn(url, div, chakri, params) {
-	loader('chakri1');
+	$('#wait_login').show();
 	/*alert(url);
 	alert(div);
 	alert(chakri);
@@ -1619,7 +1619,7 @@ function mainLogIn(url, div, chakri, params) {
 
 			var xml = ajaxRequest();
 			xml.onreadystatechange = function() {
-				loader(chakri);
+				//loader(chakri);
 				if (xml.readyState == 4) {
 
 					if (xml.status == 200
@@ -1632,8 +1632,8 @@ function mainLogIn(url, div, chakri, params) {
 					} else {
 						alert("Please try again");
 					}
-
-					remove_popup(chakri);
+					//remove_popup('chakri1');
+					//remove_popup(chakri);
 				}
 			};
 
@@ -1645,8 +1645,8 @@ function mainLogIn(url, div, chakri, params) {
 			alert(e);
 		}
 		
-		
-		
+		$('#wait_login').hide();
+	
 		if(document.getElementById('logCheck').value=="1")
 		{
 		
