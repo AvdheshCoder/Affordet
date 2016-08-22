@@ -182,7 +182,9 @@ public class SellerServiceDaoImpl extends HibernateDaoSupport implements SellerS
 		try {
 
 			tx = session.beginTransaction();
-			session.saveOrUpdate(map.get("info"));
+			TblProductInformation info = (TblProductInformation) map.get("info");
+			info.setDiscountedPrice(info.getActualPrice());
+			session.saveOrUpdate(info);
 			tx.commit();
 			return "1";
 		} catch (Exception e) {

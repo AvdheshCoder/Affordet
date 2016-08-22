@@ -5,9 +5,7 @@
 		<td colspan="4"><input type="hidden" id="productId"
 			name="productId" value="${map.productId}" /> <input type="hidden"
 			id="sellerId" name="sellerId" value="${map.sellerId}" /> <input
-			type="hidden" id="isActive" name="isActive" value="1"></input>
-			
-			<input
+			type="hidden" id="isActive" name="isActive" value="1"></input> <input
 			type="hidden" id="subCategoryId" name="subCategoryId" value="0"></input>
 			<h2>Add Product Form</h2></td>
 	</tr>
@@ -49,16 +47,21 @@
 
 	<tr valign="top">
 
-		<td>Product Description</td>
-		<td valign="top"><textarea rows="2" id="productDesc"
+		<td width="20%" align="center">Product Description</td>
+		<td valign="top" width="30%"><textarea id="productDesc"
 				name="productDescription" style="width: 88%; resize: none;"
 				maxlength="1000">
 									<c:out value=""></c:out> </textarea></td>
 
-		<td>Discount Price</td>
+		<td width="20%" align="center">Quantity</td>
+		<td width="30%"><input type="text" class="text1" id="quantity"
+			name="quantity" maxlength="5"
+			onkeypress="return isNumberKeyForMobile(event);" onblur="" value="" /></td>
+
+		<!-- <td>Discount Price</td>
 		<td><input type="text" class="text1" id="discountedPrice"
 			name="discountedPrice" maxlength="4"
-			onkeypress="return isNumberKeyForMobile(event);" onblur="" value="" /></td>
+			onkeypress="return isNumberKeyForMobile(event);" onblur="" value="" /></td> -->
 	</tr>
 
 	<!-- <tr>
@@ -66,7 +69,7 @@
 		<td><span><input type="radio" ></span></td>
 	</tr> -->
 
-	<tr>
+	<!-- <tr>
 		<td>Quantity</td>
 		<td><input type="text" class="text1" id="quantity"
 			name="quantity" maxlength="5"
@@ -78,13 +81,13 @@
 		<td><input type="text" class="text1" id="discount"
 			name="discount" maxlength="2"
 			onkeypress="return isNumberKeyForMobile(event);" onblur="" value="" /></td>
-	</tr>
+	</tr> -->
 	<tr>
 
 
 
 
-		<td>Select Category</td>
+		<td align="center">Select Category</td>
 		<td><select class="select" id="categoryId" name="categoryId"
 			onchange="">
 				<option value="0">Please Select category</option>
@@ -268,7 +271,7 @@
 
 	<tr>
 		<td colspan="2" align="center"><input type="button"
-			value="submit" onclick="add();"></td>
+			value="submit" onclick="add('ADD');"></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center"><c:choose>

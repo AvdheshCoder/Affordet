@@ -34,6 +34,7 @@ public class ExistingProductsController {
 
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, String> mapper = new HashMap<String, String>();
 		
 	String productId= httpReq.getParameter("productId");
 	
@@ -46,9 +47,9 @@ public class ExistingProductsController {
 		System.out.println("going on seller Page");
 		map.put("catList", catList);
 		
-		
+
 		List<ProductImages> productImages = sellServc.getProductImages(map);
-		
+		map.put("categoryList", catList);
 		map.put("productData", productData);
 		map.put("productImages", productImages);
 	return new ModelAndView("editProduct", "map", map);

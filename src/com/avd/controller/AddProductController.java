@@ -28,14 +28,21 @@ public class AddProductController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		System.out.println("getting product info   ");
 		TblProductInformation info = new TblProductInformation();
-		 int a=0;
+		int a = 0;
 		try {
 			BeanUtils.populate(info, httpReq.getParameterMap());
 			info.setGiftWrap("0");
 			map.put("info", info);
 			sellServc.saveProduct(map);
 			map.put("successSaved", "1");
-			map.put("menuType", "1");
+			if ("ADD".equals(httpReq.getParameter("requestFrom")))
+				map.put("menuType", "1");
+			else {
+				map.put("menuType", "2");
+				map.put("prodUpdtStatus", "1");
+			}
+				
+			
 			return new ModelAndView("sellerEnd", "map", map);
 		} catch (Exception ex) {
 			ex.printStackTrace();

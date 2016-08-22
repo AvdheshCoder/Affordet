@@ -20,6 +20,12 @@
 <link rel="stylesheet" type="text/css" href="style/style_3.css" />
 <%@ include file="/WEB-INF/views/header_seller.jsp"%>
 <script type="text/javascript">
+	/* window.onload = function() {
+	 alert("hello..");
+	 } */
+	function trimArea() {
+		alert("safadfa");
+	}
 	$(function() {
 		var menu_ul = $('.menu > li > ul'), menu_a = $('.menu > li > a');
 		menu_ul.hide();
@@ -136,6 +142,7 @@
 						<script src="js/jquery.wmuSlider.js"></script>
 					</div>
 				</div>
+				<input type="hidden" id="requestFrom" name="requestFrom" />
 				<c:if test="${map.orderUpdtStatus != null}">
 					<c:choose>
 						<c:when test="${map.orderUpdtStatus == '1'}">
@@ -144,6 +151,19 @@
 						</c:when>
 						<c:otherwise>
 							<font color="red" size="3">Order Can not be updated.
+								Please try again later.</font>
+						</c:otherwise>
+					</c:choose>
+				</c:if>
+
+				<c:if test="${map.prodUpdtStatus != null}">
+					<c:choose>
+						<c:when test="${map.prodUpdtStatus == '1'}">
+							<font color="green" size="3">Product has been updated
+								successfully</font>
+						</c:when>
+						<c:otherwise>
+							<font color="red" size="3">Product Can not be updated.
 								Please try again later.</font>
 						</c:otherwise>
 					</c:choose>
@@ -169,7 +189,7 @@
 			document.sellerform.submit();
 		}
 
-		function add() {
+		function add(requestFrom) {
 
 			//alert("1");
 			alert(document.getElementById("productName").value)
@@ -179,7 +199,7 @@
 			}
 
 			else {
-
+				document.getElementById("requestFrom").value = requestFrom;
 				document.sellerform.action = "addProduct";
 				document.sellerform.submit();
 			}
