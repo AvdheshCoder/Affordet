@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.avd.common.util.SendMail;
 import com.avd.model.Lu_Category;
 import com.avd.model.TblProductInformation;
 import com.avd.service.SellerService;
@@ -580,6 +581,11 @@ public class SellerController {
 		map.put("menuType", "4");
 		return new ModelAndView("sellerEnd", "map", map);
 
+	}
+	
+	@RequestMapping("/sendmail")
+	public void sendmailtest(HttpServletRequest httpReq, HttpServletResponse httpResp) {
+		SendMail.sendEmail("manishgupta507@gmail.com", "manish", "hello testing");;
 	}
 
 }
