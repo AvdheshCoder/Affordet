@@ -250,10 +250,10 @@ public class PaymentController {
 			+ " <br /> Order will be delivered to you till promised date, Stay assured"
 			+ "<br />Keep Smiling <br /><br /><br /><table border=\"1\"><tr><td> </td><td> </td></table>"
 			+ "Best Regards,<br />Balaji MDM Team<br />";
-	Map<String, String> inlineImages = new HashMap<String, String>();
+
 			
 	try {
-		com.avd.common.util.SendMail.sendEmailimg(email, "Balaji Traders, Order Details",mailMessg,inlineImages);
+		com.avd.common.util.SendMail.generateAndSendEmail(email, "Balaji Traders, Order Details",mailMessg);
 	} catch (Exception e) {
 		System.out.println("not sent");
 	}

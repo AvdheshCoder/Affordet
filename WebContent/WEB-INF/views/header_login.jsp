@@ -9,8 +9,8 @@
 <head>
 <title>MDM</title>
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/Common.js"></script>
+<!-- <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+ --><script type="text/javascript" src="js/Common.js"></script>
 <link rel="shortcut icon" type="image/png" href="images/log.png">
 <!-- <link href="style/style.css" rel="stylesheet" type="text/css" /> -->
 <!-- <link href="style/menu.css" rel="stylesheet" type="text/css" />
@@ -66,7 +66,7 @@ function openNewWindow(url)
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body><!---->
+<body ><!---->
 	 <div id="wait" align="center" style="display: none; width: 99%; height: 180%; z-index: 1; background-color: gray; opacity: 0.5; border: 1px solid black; position: absolute; padding: 2px;">
 		<img style="margin-top: 150px;" src='<%=request.getContextPath()%>/images/spinnerLarge.gif' width="80"	height="80" /><br>
 	</div>
@@ -86,19 +86,21 @@ function openNewWindow(url)
 						<li><a href="#"><label> </label></a></li>
 						<li><a href="contact" rel="ibox">24x7 live<span class="live"> support</span></a></li>
 					</ul>
-					<ul class="support">
-						<li class="van"><a href="#"><label> </label></a></li>
-						<li><c:choose>
+					<c:choose>
 				
 				<c:when test="${loginName eq '' || loginName eq null}">
-					<a href="trackOrder" rel="ibox">Track Order</a>
+					<!-- <a href="trackOrder" rel="ibox">Track Order</a> -->
 					</c:when>
 				<c:otherwise>
+				<ul class="support">
+						<li class="van"><a href="#"><label> </label></a></li>
+						<li>
 					<a href="trackOrder">Track Order</a>
+					</li>
+					</ul>
 				</c:otherwise>
 				</c:choose>
-				</li>
-					</ul>
+				
 					<div class="clearfix"> </div>
 					 <!---->
 					<div class="clearfix"> </div>	

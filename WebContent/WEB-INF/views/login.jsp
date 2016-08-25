@@ -66,11 +66,11 @@ margin-top: 20px;
 
 
 <script type="text/javascript">
-window.history.forward();
+/* window.history.forward();
 window.onload =  function() {
 	checkCookie();
 	
-};
+}; */
 
 
 
@@ -88,7 +88,7 @@ window.onload =  function() {
 
 
 
-<body  >
+<body onload="$('#wait').show();">
 
 	<%
 		long tLen = (long) Math.pow(10, 16 - 1) * 9;
@@ -173,7 +173,7 @@ window.onload =  function() {
 					 </div>
 					 </a>
 	                <ul class="wmuSliderPagination">
-	                <c:forEach  items="${map.slides}" >
+	                <c:forEach  begin="1" end="3">
    
 	                	<li><a href="#" class=""></a></li>
 	</c:forEach>

@@ -11,6 +11,8 @@
 
 
 
+</script>
+
 <style>
 .alpha30 {
 	background: none repeat scroll 0px 0px rgba(51, 51, 51, 0.3);

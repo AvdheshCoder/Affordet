@@ -87,7 +87,7 @@ p.cart {
 						<c:forEach var="listItem" items="${map.cartProductsDesc}"
 					varStatus="counter">
 								<tr style="border: 1px solid; border-color: threedlightshadow;">
-									<td colspan='2' align="left"><a
+									<td colspan='2' align="left" onclick="$('#wait').show();"><a 
 										class="now-get get-cart-in" style="float: left;" rel="ibox"
 										href="trackOrderDetails?orderId=${listItem[1]}" id='bef'><span>
 												${listItem[1]}</span></a></td>

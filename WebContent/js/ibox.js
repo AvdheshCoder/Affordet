@@ -865,6 +865,9 @@ var iBox = function() {
 	_pub.addEvent(window, 'keypress', function(e) {
 		if (e.keyCode == (window.event ? 27 : e.DOM_VK_ESCAPE)) {
 			iBox.hide();
+			try{$('#wait').hide();}
+			catch(e){}
+			
 		}
 	});
 	_pub.addEvent(window, 'resize', _pub.reposition);
@@ -1041,5 +1044,6 @@ var iBox = function() {
 function closeIt()
 {
 	iBox.hide();
-	
+try{$('#wait').hide();}
+catch(e){}
 }

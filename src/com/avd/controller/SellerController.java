@@ -27,6 +27,8 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageOutputStream;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -583,9 +585,6 @@ public class SellerController {
 
 	}
 	
-	@RequestMapping("/sendmail")
-	public void sendmailtest(HttpServletRequest httpReq, HttpServletResponse httpResp) {
-		SendMail.sendEmail("manishgupta507@gmail.com", "manish", "hello testing");;
-	}
+	
 
 }

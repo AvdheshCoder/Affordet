@@ -1,5 +1,4 @@
-
-	<div class="footer" style="background-color:#0a3151;">
+<div class="footer" style="background-color:#0a3151;">
 	<!-- 	<div class="footer-top">
 			<div class="container">
 				<div class="latter">
@@ -53,3 +52,15 @@
 			</div>
 		</div>
 	</div>
+	
+	
+<script type="text/javascript">
+
+window.onload =  function() {
+	$('#wait').hide();
+	
+}; 
+
+
+
+</script>
