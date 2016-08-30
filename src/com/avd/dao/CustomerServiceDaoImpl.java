@@ -298,9 +298,10 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 		String login_id = "";
 		String flag = "0";
 		try {
-
-			SQLQuery qry = session.createSQLQuery(
-					"select valid_code ,login_Id  from user_login where email_id='" + map.get("email").toString()
+			SQLQuery qry = null;
+			if("1".equals(map.get("key"))){
+			qry = session.createSQLQuery(
+					"select valid_code ,login_Id  from user_login where user_name='" + map.get("email").toString()
 							+ "' and is_active='1' and password='" + map.get("password").toString() + "'");
 			productInfo = qry.list();
 			for (Object[] reslt : productInfo) {
@@ -308,6 +309,22 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 				flag = "1";
 
 			}
+			
+			}
+			
+			
+			else{
+			 qry = session.createSQLQuery(
+					"SELECT MAX(DATE(CREATED_AT)),'1' FROM test.product_final_orders_information p WHERE P.LOGIN_ID='" + map.get("loginId").toString() + "'");
+			productInfo = qry.list();
+			for (Object[] reslt : productInfo) {
+
+				
+				flag=String.valueOf(reslt[0]);
+			}
+
+			}
+			
 		} catch (Exception e) {
 
 			if (tx != null)
@@ -330,7 +347,7 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 		Session session = sessionFactory.openSession();
 		try {
 			SQLQuery qry = session
-					.createSQLQuery("select login_id, user_name,email_Id, user_code from user_login where email_Id='"
+					.createSQLQuery("select login_id, user_name,email_Id, user_code from user_login where user_name='"
 							+ map.get("email").toString() + "'");
 			productInfo = qry.list();
 
@@ -604,8 +621,10 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 				ProductFinalOrdersInformation obj = new ProductFinalOrdersInformation();
 				java.util.Date now = new java.util.Date();
 				java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
-				Long ln = (currentTimestamp.getTime());
-				str = String.valueOf(ln);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");   	
+			    System.out.println(sdf.format(new Date()));
+			    str=sdf.format(new Date())+map.get("userCode");
 				obj.setOrderId(str);
 				obj.setLoginId(map.get("loginId").toString());
 				obj.setAddress(map.get("address").toString());
@@ -652,8 +671,9 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 				ProductFinalOrdersInformation obj = new ProductFinalOrdersInformation();
 				java.util.Date now = new java.util.Date();
 				java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
-				Long ln = (currentTimestamp.getTime());
-				str = String.valueOf(ln);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");   	
+			    System.out.println(sdf.format(new Date()));
+			    str=sdf.format(new Date())+map.get("userCode");
 				obj.setOrderId(str);
 				obj.setLoginId(map.get("loginId").toString());
 				obj.setAddress(map.get("address").toString());

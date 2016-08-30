@@ -198,7 +198,7 @@ float:right:
 										<input type="button" class="continue" value="Continue Shopping" />
 										</a>
 										
-										<c:if test="${finlAmnt ne '0'}">
+										<c:if test="${finlAmnt ne '0' && canPurchaseItem eq '1'}">
 										
 									<!-- 	<input type="button" class="order"  id="rzp-button1" name="rzp-button1" value="Place Order" />
 							 -->		<input type="button" class="order"  id="placeorder-button1" name="rzp-button1" value="Place Order" />	

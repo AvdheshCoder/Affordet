@@ -4,6 +4,8 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -214,6 +216,7 @@ else{
 		String password= httpReq.getParameter("password");
 		HttpSession session = httpReq.getSession(false);
 		map.put("email",email);
+		map.put("key","1");
 		map.put("password",password);
 	 	String  id=customerServc.authenticateLogin(map);
 	    String message="";
@@ -226,10 +229,35 @@ if("1".equals(id))
 	for(Object[] a: data)
 	{
 	session.setAttribute("loginId", String.valueOf(a[0]));
+	map.put("key","2");
+	map.put("loginId",String.valueOf(a[0]));
+	id=customerServc.authenticateLogin(map);
+	String canPurchaseItem="0";
+	if("null".equalsIgnoreCase(id)|id==null|"".equals(id))
+	{
+	canPurchaseItem="1";	
+	}
+	else{
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");   	
+	    
+		Date d1 = new SimpleDateFormat("yyyy-MM-dd").parse(id);
+		Date d2 = new SimpleDateFormat("yyyy-MM-dd").parse(sdf.format(new Date()));		
+
+		long diff = Math.abs(d2.getTime() - d1.getTime());
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		if(diffDays>15)
+		{
+			canPurchaseItem="1";		
+		}
+
+		
+	}
+	
 	session.setAttribute("loginName", String.valueOf(a[1]));
 	session.setAttribute("emailId", String.valueOf(a[2]));
-	session.setAttribute("shoppingCode", String.valueOf(a[3]));
+	session.setAttribute("userCode", String.valueOf(a[3]));
 	session.setAttribute("loginFlag", "1");
+	session.setAttribute("canPurchaseItem", canPurchaseItem);
 
 	}
 	message="<input type='hidden' id='logCheck' value='1'>";

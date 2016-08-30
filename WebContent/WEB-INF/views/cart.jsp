@@ -146,7 +146,7 @@ p.cart {
 										<input type="button" class="continue" value="Continue Shopping" />
 										</a>
 										
-										<c:if test="${finlAmnt ne '0'}">
+										<c:if test="${finlAmnt ne '0' && canPurchaseItem eq '1'}">
 										<a href="buyNow?flag=2&totalAmount=0"; rel="ibox"><input type="button" class="order" value="Checkout" /> </a>
 					
 										</c:if>

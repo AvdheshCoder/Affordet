@@ -395,7 +395,7 @@ img{max-width:100%;}
 			</div>
 			<form  class="formA" id="loginX" name="loginX">
 				<li>
-					<input type="text"  id= "email" value="E-mail"   onfocus="if (this.value == 'E-mail') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'E-mail';}" ><a href="#" class=" icon user"></a>
+					<input type="text"  id= "email" value="UserName"   onfocus="if (this.value == 'UserName') {this.value = '';}"  onblur="if (this.value == '') {this.value = 'UserName';}" ><a href="#" class=" icon user"></a>
 				</li>
 				<li>
 					<input type="password"  id="password" value="Password" onfocus="if (this.value == 'Password') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon lock"></a>

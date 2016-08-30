@@ -181,7 +181,6 @@ public class CartController {
 		String pincode=req.getParameter("pincode");
 		String flag=req.getParameter("flag");
 		String productId=req.getParameter("productId");
-		String productId1=req.getParameter("productId");
 		String totalAmount=req.getParameter("totalAmount");
 		String returnPolicy=req.getParameter("productId");
 		String returnDays=req.getParameter("returnDays");
@@ -203,6 +202,7 @@ public class CartController {
 		{
 		String loginId=session.getAttribute("loginId").toString();
 		map.put("loginId", loginId);
+		map.put("userCode", session.getAttribute("userCode").toString());
 		}
 		else if(session!=null &&session.getAttribute("logId")!=null){
 			String loginId=session.getAttribute("logId").toString();

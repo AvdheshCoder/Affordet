@@ -152,11 +152,13 @@ function openNewWindow(url)
 							
 								<c:choose>
 				
-				<c:when test="${loginName eq '' || loginName eq null}">
+				<c:when test="${loginName eq '' || loginName eq null }">
 					</c:when>
 				<c:otherwise>
+				<c:if test="${canPurchaseItem eq '1'}">
 					<div class="cart"><a href="cart"><span></span>&nbsp;</a><span id="productSelectedNo" class="las">${map.productInCart}</span>  
-								</div>
+								</div></c:if>
+				
 						
 				<form id="logout" name="logout" method="post"> </form>
 								 <a href="#"><b>

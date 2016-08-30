@@ -1568,19 +1568,19 @@ function loggedIn()
 {
 	
 //	alert(document.getElementById("email").value.length);
-if(document.getElementById("email").value.length < 7)
+if(document.getElementById("email").value.length < 4)
 	{
 	
-	document.getElementById("emailInvalid").innerHTML= "<font color='red'>Please Enter Email</font>";
+	document.getElementById("emailInvalid").innerHTML= "<font color='red'>Please Enter UserId</font>";
 	
 	
 	}
-else if(((document.getElementById("email").value!="" ) &&  (EmailAddressValidator("email","emailInvalid")))) 
+/*else if(((document.getElementById("email").value!="" ) &&  (EmailAddressValidator("email","emailInvalid")))) 
 		{
 	
 	
 	}
-
+*/
 
 
 else if(document.getElementById("password").value=="Password" ||document.getElementById("password").value=="" )
@@ -2012,12 +2012,12 @@ function updateQuant(id,url,saveSpan,totalAmount,subTotal,productId,aId,producAv
 	{
 	alert("Please enter a lower quantity");
 	}
-	else if(parseInt(qntity)>parseInt(producAvailable))
+	/*else if(parseInt(qntity)>parseInt(producAvailable))
 		{
 		alert("We are So Sorry !Only "+producAvailable+" item(s) are left of "+producName);
 		document.getElementById(id).value=document.getElementById(aId).value;
 		hideSpan(saveSpan);
-		}
+		}*/
 	else{
 		var params='pId='+productId+'&quantity='+qntity+'&orderId='+document.getElementById("orderId").value;
 	try {

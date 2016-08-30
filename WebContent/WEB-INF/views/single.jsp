@@ -117,7 +117,7 @@ a.now-already {
 				<div class="cart-b">
 					<div class="left-n ">Rs. ${listItems.discountedPrice}</div>
 					<c:choose>
-						<c:when test="${loginName eq '' || loginName eq null}">
+						<c:when test="${loginName eq '' || loginName eq null || canPurchaseItem eq '0'}">
 						</c:when>
 					<c:otherwise>
 					<c:choose>
@@ -143,7 +143,7 @@ a.now-already {
 			   	<p>${listItems.productDescription}</p>
 			   	 <h6>${listItems.quantity} items in stock   </h6>
 			   		 <h6>Delivery in ${listItems.deliveryTime} days  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Delivery Charges: Rs.${listItems.deliveryCharges}</h6>
-			   		  <h6>Return Policy:
+			   		 <%--  <h6>Return Policy:
 			   		  <c:choose>
 			   		  <c:when test="${listItems.returnPolicy eq 'Y'}">
 			   		  ${listItems.returnPolicyDays} days
@@ -153,7 +153,7 @@ a.now-already {
 			   		  </c:otherwise> 
 			   		  </c:choose>
 			   		
-			   		      </h6>
+			   		      </h6> --%>
 			   		  <h6>
 			   		  <c:if test="${listItems.giftWrap eq 'Y'}">  Gift Wrap Charges: Rs.${listItems.giftWrapCharges}</c:if>
 			   		  <!-- 
@@ -164,6 +164,9 @@ a.now-already {
 			   	<c:choose>
 						<c:when test="${loginName eq '' || loginName eq null}">
 						<font color="red">*Please login to buy </font>
+						</c:when>
+						<c:when test="${canPurchaseItem eq '0'}">
+						<font color="red">*Please wait 15 days from last order</font>
 						</c:when>
 					<c:otherwise>
 			 
