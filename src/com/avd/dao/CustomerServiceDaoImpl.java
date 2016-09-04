@@ -63,9 +63,8 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 							+ " inner join tbl_product_display_images t2 on t2.p_id= t1.product_id and t2.category_id=t1.category_id and t1.sub_category_id=t2.sub_category_id"
 							+ " where t1.category_id='" + map.get("category").toString() + "' and t2.sub_category_id='"
 							+ map.get("subCategory").toString() + "' and t1.is_active=1 "
-							//+ " and t1.quantity >0 "
-							+" LIMIT "
-							+ map.get("count1").toString() + "," + map.get("count2").toString());
+							// + " and t1.quantity >0 "
+							+ " LIMIT " + map.get("count1").toString() + "," + map.get("count2").toString());
 			productInfo = qry.list();
 
 		} catch (HibernateException e) {
@@ -301,32 +300,31 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 		String flag = "0";
 		try {
 			SQLQuery qry = null;
-			if("1".equals(map.get("key"))){
-			qry = session.createSQLQuery(
-					"select valid_code ,login_Id  from user_login where user_name='" + map.get("email").toString()
-							+ "' and is_active='1' and password='" + map.get("password").toString() + "'");
-			productInfo = qry.list();
-			for (Object[] reslt : productInfo) {
+			if ("1".equals(map.get("key"))) {
+				qry = session.createSQLQuery(
+						"select valid_code ,login_Id  from user_login where user_name='" + map.get("email").toString()
+								+ "' and is_active='1' and password='" + map.get("password").toString() + "'");
+				productInfo = qry.list();
+				for (Object[] reslt : productInfo) {
 
-				flag = "1";
+					flag = "1";
 
-			}
-			
-			}
-			
-			
-			else{
-			 qry = session.createSQLQuery(
-					"SELECT MAX(DATE(CREATED_AT)),'1' FROM test.product_final_orders_information p WHERE P.LOGIN_ID='" + map.get("loginId").toString() + "'");
-			productInfo = qry.list();
-			for (Object[] reslt : productInfo) {
-
-				
-				flag=String.valueOf(reslt[0]);
-			}
+				}
 
 			}
-			
+
+			else {
+				qry = session.createSQLQuery(
+						"SELECT MAX(DATE(CREATED_AT)),'1' FROM test.product_final_orders_information p WHERE P.LOGIN_ID='"
+								+ map.get("loginId").toString() + "'");
+				productInfo = qry.list();
+				for (Object[] reslt : productInfo) {
+
+					flag = String.valueOf(reslt[0]);
+				}
+
+			}
+
 		} catch (Exception e) {
 
 			if (tx != null)
@@ -623,10 +621,10 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 				ProductFinalOrdersInformation obj = new ProductFinalOrdersInformation();
 				java.util.Date now = new java.util.Date();
 				java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
-				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");   	
-			    System.out.println(sdf.format(new Date()));
-			    str=sdf.format(new Date())+map.get("userCode");
+
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+				System.out.println(sdf.format(new Date()));
+				str = sdf.format(new Date()) + map.get("userCode");
 				obj.setOrderId(str);
 				obj.setLoginId(map.get("loginId").toString());
 				obj.setAddress(map.get("address").toString());
@@ -673,9 +671,9 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 				ProductFinalOrdersInformation obj = new ProductFinalOrdersInformation();
 				java.util.Date now = new java.util.Date();
 				java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");   	
-			    System.out.println(sdf.format(new Date()));
-			    str=sdf.format(new Date())+map.get("userCode");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+				System.out.println(sdf.format(new Date()));
+				str = sdf.format(new Date()) + map.get("userCode");
 				obj.setOrderId(str);
 				obj.setLoginId(map.get("loginId").toString());
 				obj.setAddress(map.get("address").toString());
@@ -691,7 +689,8 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 						"select t1.product_Id, t1.quantity , t2.discounted_price , t2.return_days from  tbl_cart_record t1 "
 								+ " inner join tbl_product_information t2 on t2.product_id=t1.product_id "
 								+ " where t1.user_id=? and t2.is_active=1 ");
-								//+ " where t1.user_id=? and t2.is_active=1 and t2.quantity>0");
+				// + " where t1.user_id=? and t2.is_active=1 and
+				// t2.quantity>0");
 
 				String bhId = map.get("loginId").toString();
 
@@ -982,7 +981,8 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 
 				}
 				ps = conn.prepareStatement(
-						"update product_final_orders_information set  total_Amount='" + map.get("amount").toString() +"' , order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "
+						"update product_final_orders_information set  total_Amount='" + map.get("amount").toString()
+								+ "' , order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "
 								+ deliveryTime + " DAY) , created_at='" + map.get("createdAt").toString()
 								+ "',payment_id='" + map.get("paymentId").toString() + "' , status_id='" + 1
 								+ "', status_description='PENDING' , customer_finalize='" + 1 + "' where order_id='"
@@ -995,13 +995,13 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 								+ map.get("orderId").toString() + "' )");
 				System.out.println(ps);
 				ps.executeUpdate();
-/*
-				ps = conn.prepareStatement(
-						" update tbl_product_information t1 set t1.quantity=t1.quantity-(select t2.quantity from product_final_orders t2 where  order_id='"
-								+ map.get("orderId").toString()
-								+ "' ) where  t1.product_id in (select t2.product_id from product_final_orders t2 where  order_id='"
-								+ map.get("orderId").toString() + "' )");
-				ps.executeUpdate();*/
+				/*
+				 * ps = conn.prepareStatement(
+				 * " update tbl_product_information t1 set t1.quantity=t1.quantity-(select t2.quantity from product_final_orders t2 where  order_id='"
+				 * + map.get("orderId").toString() +
+				 * "' ) where  t1.product_id in (select t2.product_id from product_final_orders t2 where  order_id='"
+				 * + map.get("orderId").toString() + "' )"); ps.executeUpdate();
+				 */
 			}
 
 			else if ("3".equals(map.get("flag").toString())) {
@@ -1279,7 +1279,8 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 					obj.setDeliveredDate(new Timestamp(new Date().getTime()));
 				} else if ("5".equals(statusId)) {
 					obj.setRejecedOn(new Timestamp(new Date().getTime()));
-				}				session.update(obj);
+				}
+				session.update(obj);
 				tx.commit();
 				result = "1";
 			}
@@ -1296,19 +1297,19 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 		}
 
 	}
-	
+
 	@Override
 	public String getCustomerInfoForMail(String orderId) {
 		Session session = sessionFactory.openSession();
 		List<Object[]> customer = new ArrayList<Object[]>();
 		String result = null;
 		try {
-			SQLQuery qry = session.createSQLQuery("select email_id, user_name, 1 FROM user_login where email_id in ("
-					+ " select email_id from product_final_orders_information where order_id = '" + orderId + "')");
+			SQLQuery qry = session.createSQLQuery(
+					" select email_id, name from product_final_orders_information where order_id = '" + orderId + "'");
 			customer = qry.list();
 			if (customer != null && customer.size() > 0)
 				result = customer.get(0)[0].toString() + "," + customer.get(0)[1].toString();
-				System.out.println("result is "+result);
+			System.out.println("result is " + result);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
