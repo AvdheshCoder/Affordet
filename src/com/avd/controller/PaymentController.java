@@ -181,6 +181,7 @@ public class PaymentController {
 
 			}
 			else{
+				map.put("orderId", orderId);
 				return new ModelAndView("paymentSuccessful", "map", map);
 				
 			}
@@ -225,7 +226,7 @@ public class PaymentController {
 		System.out.println("amount"+amount);		
 
 		Integer amnt= new Integer(amount);
-		amnt=amnt;
+		/*amnt=amnt;*/
 		map.put("paymentId","DONE");
 		map.put("amount",amnt);
 		map.put("createdAt",new Timestamp(System.currentTimeMillis()));
@@ -257,7 +258,7 @@ public class PaymentController {
 	} catch (Exception e) {
 		System.out.println("not sent");
 	}
-	
+	session.setAttribute("canPurchaseItem", "0");
 	return new ModelAndView("redirect:paymentSuccessful?dsvGfTRFekjhgdfnm32Gjfh="+orderId+"&amount=djsT565yhFG");
 }
 		

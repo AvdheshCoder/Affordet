@@ -62,7 +62,9 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 							+ " t2.product_images from tbl_product_information t1"
 							+ " inner join tbl_product_display_images t2 on t2.p_id= t1.product_id and t2.category_id=t1.category_id and t1.sub_category_id=t2.sub_category_id"
 							+ " where t1.category_id='" + map.get("category").toString() + "' and t2.sub_category_id='"
-							+ map.get("subCategory").toString() + "' and t1.is_active=1 and t1.quantity >0 LIMIT "
+							+ map.get("subCategory").toString() + "' and t1.is_active=1 "
+							//+ " and t1.quantity >0 "
+							+" LIMIT "
 							+ map.get("count1").toString() + "," + map.get("count2").toString());
 			productInfo = qry.list();
 
@@ -688,7 +690,8 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 				SQLQuery qry = session.createSQLQuery(
 						"select t1.product_Id, t1.quantity , t2.discounted_price , t2.return_days from  tbl_cart_record t1 "
 								+ " inner join tbl_product_information t2 on t2.product_id=t1.product_id "
-								+ " where t1.user_id=? and t2.is_active=1 and t2.quantity>0");
+								+ " where t1.user_id=? and t2.is_active=1 ");
+								//+ " where t1.user_id=? and t2.is_active=1 and t2.quantity>0");
 
 				String bhId = map.get("loginId").toString();
 
@@ -979,7 +982,7 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 
 				}
 				ps = conn.prepareStatement(
-						"update product_final_orders_information set order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "
+						"update product_final_orders_information set  total_Amount='" + map.get("amount").toString() +"' , order_date=current_timestamp ,expected_delivery_date= DATE_ADD(CURDATE(), INTERVAL "
 								+ deliveryTime + " DAY) , created_at='" + map.get("createdAt").toString()
 								+ "',payment_id='" + map.get("paymentId").toString() + "' , status_id='" + 1
 								+ "', status_description='PENDING' , customer_finalize='" + 1 + "' where order_id='"
@@ -992,13 +995,13 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 								+ map.get("orderId").toString() + "' )");
 				System.out.println(ps);
 				ps.executeUpdate();
-
+/*
 				ps = conn.prepareStatement(
 						" update tbl_product_information t1 set t1.quantity=t1.quantity-(select t2.quantity from product_final_orders t2 where  order_id='"
 								+ map.get("orderId").toString()
 								+ "' ) where  t1.product_id in (select t2.product_id from product_final_orders t2 where  order_id='"
 								+ map.get("orderId").toString() + "' )");
-				ps.executeUpdate();
+				ps.executeUpdate();*/
 			}
 
 			else if ("3".equals(map.get("flag").toString())) {

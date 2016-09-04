@@ -353,7 +353,7 @@ img {
 							</c:when>
 						</c:choose>
 					</c:if>
-
+<c:if test="${map.sellerId != null}">
 					<br></br>
 					<table>
 
@@ -366,7 +366,7 @@ img {
 							</tr>
 						</tbody>
 					</table>
-
+</c:if>
 				</form>
 			</div>
 		</div>

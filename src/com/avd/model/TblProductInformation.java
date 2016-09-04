@@ -75,11 +75,30 @@ public class TblProductInformation implements Serializable {
 	
 	@Column(name="GIFT_WRAP")
 	private String giftWrap;
+	
 	@Column(name="GIFT_WRAP_CHARGES")
 	private int giftWrapCharges;
-
+	
+/*	@Column(name="QUANTITY_INITIAL")
+	private int quantityInitial;
+*/
 
 	
+
+
+/*
+	public int getQuantityInitial() {
+		return quantityInitial;
+	}
+
+
+
+	public void setQuantityInitial(int quantityInitial) {
+		this.quantityInitial = quantityInitial;
+	}
+
+*/
+
 	public TblProductInformation() {
 	}
 	

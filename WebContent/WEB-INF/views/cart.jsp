@@ -88,19 +88,19 @@ p.cart {
 						 <img src="data:image/png;base64, ${listItem[9]}" height="80" width="70" alt=""/>
 				
 						&nbsp;&nbsp;&nbsp;${listItem[1]}</td>
-
-									<c:choose>
-
-										<c:when test="${listItem[10] eq '0' || listItem[11] eq '0' }">
+<!-- TO CHECK IF ITEM QUANTITY EXISTS  -->
+							<%-- 		<c:choose>
+														
+										<c:when test="${listItem[10] eq 'X' || listItem[11] eq 'X' }">
 										<td colspan="4" width='80%' ><b>You are late, Item is out of Stock</b></td>
 										
 										</c:when>
 
-										<c:otherwise>
+										<c:otherwise> --%>
 											<td width="20%"><input type="hidden"
 												id="preQuant${listItem[0]}" value="${listItem[7]}">
 												<input type="text" id="quant${listItem[0]}" onpaste="return false"
-												value="${listItem[7]}" style="height: 27px; width: 25px;"
+												value="${listItem[7]}" style="height: 27px; width: 30px;"
 												maxlength="3"
 												onkeypress="isCartCheck(event);showSpan('span${listItem[0]}');"
 												onblur="checkCartVal('preQuant${listItem[0]}','quant${listItem[0]}');">
@@ -113,8 +113,8 @@ p.cart {
 											<td width="20%">${listItem[5]}</td>
 											<td width="20%"></td>
 											<td width="20%"><span id="subTot${listItem[0]}">${listItem[8]}</span></td>
-										</c:otherwise>
-									</c:choose>
+										<%-- </c:otherwise>
+									</c:choose> --%>
 
 
 

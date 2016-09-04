@@ -1838,7 +1838,7 @@ function isNumberKeyForMobile(evt) {
 function isCartCheck(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode;
    
-    if ((charCode < 49 || charCode > 57) && charCode != 8 ) {
+    if ((charCode < 48 || charCode > 57) && charCode != 8 ) {
      
         evt.preventDefault();
         return false;
@@ -1988,7 +1988,13 @@ function updateQuant(id,url,saveSpan,totalAmount,subTotal,productId,aId,producAv
 {
 	
 	var qntity=document.getElementById(id).value;
-	if(qntity=="")
+	if(qntity.substring(0,1)=="0"){
+		alert("Quantity cannot start with 0");
+		document.getElementById(id).value=document.getElementById(aId).value;
+		hideSpan(saveSpan);
+	}
+	
+	else if(qntity=="")
 		{
 		document.getElementById(id).value=document.getElementById(aId).value;
 		hideSpan(saveSpan);
@@ -1996,11 +2002,15 @@ function updateQuant(id,url,saveSpan,totalAmount,subTotal,productId,aId,producAv
 	else if (isNaN(qntity))
 		{
 		alert("Please only enter numbers");
+		document.getElementById(id).value=document.getElementById(aId).value;
+		hideSpan(saveSpan);
 		}
 	
 	else if (qntity.indexOf(".")!=-1)
 		{
 		alert("Please enter whole numbers like 1,2 ,3..");
+		document.getElementById(id).value=document.getElementById(aId).value;
+		hideSpan(saveSpan);
 		}
 	else if(parseInt(qntity)<1)
 		
@@ -2011,6 +2021,8 @@ function updateQuant(id,url,saveSpan,totalAmount,subTotal,productId,aId,producAv
 		
 	{
 	alert("Please enter a lower quantity");
+	document.getElementById(id).value=document.getElementById(aId).value;
+	hideSpan(saveSpan);
 	}
 	/*else if(parseInt(qntity)>parseInt(producAvailable))
 		{

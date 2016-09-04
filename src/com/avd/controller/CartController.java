@@ -81,7 +81,11 @@ public class CartController {
 		Integer total=0;
 		for(Object[] a: dat)
 		{
-			if("0".equals(a[10].toString()) |"0".equals(a[11].toString()) ) 
+			/*if("0".equals(a[10].toString()) |"0".equals(a[11].toString()) ) 
+			{
+				
+			}*/ //if check on quantity
+			if("0".equals(a[10].toString())) 
 			{
 				
 			}
@@ -254,7 +258,11 @@ public class CartController {
 		Integer total=0;
 		for(Object[] a: dat)
 		{
-			if("0".equals(a[10].toString()) |"0".equals(a[11].toString()) ) 
+			/*if("0".equals(a[10].toString()) |"0".equals(a[11].toString()) ) 
+			{
+				
+			}*/// quantity check
+			if("0".equals(a[10].toString())  ) 
 			{
 				
 			}
