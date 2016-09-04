@@ -232,8 +232,8 @@ if("1".equals(id))
 	map.put("key","2");
 	map.put("loginId",String.valueOf(a[0]));
 	id=customerServc.authenticateLogin(map);
-	String canPurchaseItem="0";
-	if("null".equalsIgnoreCase(id)|id==null|"".equals(id))
+	String canPurchaseItem="1";
+	/*if("null".equalsIgnoreCase(id)|id==null|"".equals(id))
 	{
 	canPurchaseItem="1";	
 	}
@@ -251,7 +251,7 @@ if("1".equals(id))
 		}
 
 		
-	}
+	}*/
 	
 	session.setAttribute("loginName", String.valueOf(a[1]));
 	session.setAttribute("emailId", String.valueOf(a[2]));
@@ -260,7 +260,7 @@ if("1".equals(id))
 	session.setAttribute("canPurchaseItem", canPurchaseItem);
 
 	}
-	message="<input type='hidden' id='logCheck' value='1'>";
+	message="<input type='hidden' id='logCheck' value='1'><input type='hidden' id='debugAllme' value='"+id+"'>";
 	
 }
 else {
