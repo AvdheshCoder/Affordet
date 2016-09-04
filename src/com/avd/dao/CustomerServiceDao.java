@@ -42,5 +42,5 @@ public interface CustomerServiceDao {
 	public List<Object[]> getTrackDesc(Map<String,Object> map);
 	public String getNextStatus(String orderId);
 	public String updateOrderStatus(String statusId, String orderId, String statusDesc);
-	
+	public String getCustomerInfoForMail(String orderId);	
 }

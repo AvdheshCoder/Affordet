@@ -354,7 +354,18 @@ img {
 						</c:choose>
 					</c:if>
 
+					<br></br>
+					<table>
 
+						<thead style="background-color: #E0E0D1">
+						</thead>
+						<tbody style="padding: 1px;">
+							<tr>
+								<td><font color="green" size="2"><a
+										href="generateBill?orderId=${orderId}">Generate Bill</a></font></td>
+							</tr>
+						</tbody>
+					</table>
 
 				</form>
 			</div>

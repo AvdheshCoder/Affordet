@@ -1293,5 +1293,27 @@ public class CustomerServiceDaoImpl extends HibernateDaoSupport implements Custo
 		}
 
 	}
+	
+	@Override
+	public String getCustomerInfoForMail(String orderId) {
+		Session session = sessionFactory.openSession();
+		List<Object[]> customer = new ArrayList<Object[]>();
+		String result = null;
+		try {
+			SQLQuery qry = session.createSQLQuery("select email_id, user_name, 1 FROM user_login where email_id in ("
+					+ " select email_id from product_final_orders_information where order_id = '" + orderId + "')");
+			customer = qry.list();
+			if (customer != null && customer.size() > 0)
+				result = customer.get(0)[0].toString() + "," + customer.get(0)[1].toString();
+				System.out.println("result is "+result);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+			return result;
+		}
+	}
 
 }

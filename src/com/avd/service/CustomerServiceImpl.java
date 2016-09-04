@@ -198,4 +198,9 @@ public class CustomerServiceImpl implements CustomerService {
 	public String updateOrderStatus(String statusId, String orderId, String statusDesc){
 		return sellSrvcDao.updateOrderStatus(statusId, orderId, statusDesc);
 	}
+	
+	@Override
+	public String getCustomerInfoForMail(String orderId) {
+		return sellSrvcDao.getCustomerInfoForMail(orderId);
+	}
 }

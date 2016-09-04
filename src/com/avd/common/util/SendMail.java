@@ -32,6 +32,9 @@ public class SendMail {
 		 * " Login Id : " + loginId + " <BR>" + " Password : " + pass + " <BR>"
 		 * + " Thanks & Regards <BR> " + " CLR MP ";
 		 */
+		
+		StringBuilder mailMsg = new StringBuilder(mailMessg);
+		mailMsg.append("<br><br>Thanks for Shopping.<br><br><br> Best Regards,<br> Balaji Tranders and Team");
 
 		System.out.println(" ---- receipent --- " + receipent);
 
@@ -53,9 +56,9 @@ public class SendMail {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(receipent));
 
 			message.setSubject(" Welcome " + firstName);
-			message.setText(mailMessg);
+			message.setText(mailMsg.toString());
 
-			message.setContent(mailMessg, "text/html; charset=utf-8");
+			message.setContent(mailMsg.toString(), "text/html; charset=utf-8");
 
 			// send the message
 			Transport.send(message);
