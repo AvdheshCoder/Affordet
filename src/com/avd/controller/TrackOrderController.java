@@ -132,7 +132,7 @@ public class TrackOrderController {
 					mailMsg.append("Dear " + customerDtl.split(",")[1] + ",<br><br> Your Order id : <b>" + orderId
 							+ "</b> has been <b>" + statusDesc + "</b> by Balaji Traders (Mid Day Meal)");
 					mailMsg.append(
-							"<br><br>Thanks for Shopping.<br><br><br> Best Regards,<br> Balaji Tranders and Team");
+							"<br><br>Thanks for Shopping.<br><br><br> Best Regards,<br> Balaji Traders and Team");
 					String subject = "Order status for id " + orderId;
 					SendMail.generateAndSendEmail(customerDtl.split(",")[0], subject, mailMsg.toString());
 
