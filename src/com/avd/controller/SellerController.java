@@ -51,6 +51,8 @@ public class SellerController {
 
 	@Autowired
 	SellerService sellServc;
+	
+	//work by Chandu
 
 	@RequestMapping("/sellerLogin")
 	public ModelAndView sellerLogin(HttpServletRequest httpReq, HttpServletResponse httpResp) {
