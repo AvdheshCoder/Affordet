@@ -11,7 +11,6 @@ public class FormatString {
 		{
 		    str.insert(idx, " ");
 		    idx = idx - 4;
-		    System.out.println("hello worldss");
 		}
 		
 		return str.toString();
