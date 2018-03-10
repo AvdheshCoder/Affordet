@@ -14,6 +14,7 @@ public class ExecuteShellScript
 
     public static synchronized ExecuteShellScript getInstance()
     {
+    	System.out.println("hello.. My first project");
         if(instance == null)
             instance = instantiate();
 
