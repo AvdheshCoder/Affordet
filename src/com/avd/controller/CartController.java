@@ -37,6 +37,22 @@ public class CartController {
 		cartProduct=customerServc.getCartProducts(map);
 		dat= customerServc.getCartProductsDesc(map);
 		}
+		if("0".equals(a[10].toString()) |"0".equals(a[11].toString()) ) 
+			{
+				
+			}
+			else{
+			total=total+new Integer(String.valueOf(a[8]));	
+			}
+			}
+	if("0".equals(a[10].toString()) |"0".equals(a[11].toString()) ) 
+			{
+				
+			}
+			else{
+			total=total+new Integer(String.valueOf(a[8]));	
+			}
+			}
 		else if(session!=null &&session.getAttribute("logId")!=null){
 			String loginId=session.getAttribute("logId").toString();
 			map.put("loginId", loginId);
