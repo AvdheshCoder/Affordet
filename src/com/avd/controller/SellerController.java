@@ -59,6 +59,7 @@ public class SellerController {
 	@RequestMapping("/sellerLogin")
 	public ModelAndView sellerLogin(HttpServletRequest httpReq, HttpServletResponse httpResp) {
 		HttpSession session = httpReq.getSession(false);
+		String s = null;
 		if (session != null && session.getAttribute("sellerLoginName") != null) {
 			return new ModelAndView("redirect:sellerEnd");
 		} else {
