@@ -23,6 +23,7 @@ public class CartController {
 	@RequestMapping("/removeFromCart")
 	public ModelAndView removeFromCart(HttpServletRequest req,
 			HttpServletResponse res) {
+		/*added*/
 		HttpSession session = req.getSession(false);
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<Object[]> dat = new ArrayList<Object[]>();
