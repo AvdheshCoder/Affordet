@@ -18,6 +18,7 @@ import com.avd.service.CustomerService;
 @Controller
 public class CartController {
 
+	/*comment*/
 	@Autowired
 	CustomerService customerServc;
 	@RequestMapping("/removeFromCart")
